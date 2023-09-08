@@ -1,0 +1,97 @@
+.win #_mark {
+	top: 23px;
+}
+.card {
+	font-family: arial;
+	font-size: 20px;
+	text-align: center;
+	color: black;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+}
+.win .card {
+	margin-top: 31px;
+}
+.mobile .card {
+ padding-top: 10px;
+}
+.nightMode.card {
+  background-color: #222;
+}
+
+table {
+	table-layout: fixed;
+	border-collapse: collapse;
+}
+
+td {
+	height: 46px;
+	width: 46px;
+	min-width: 35px;
+	text-align: center;
+	color: #0000;
+  user-select: none;
+}
+
+td:not(.e) {
+	border: 2px solid black;
+	margin: -1px;
+	cursor: pointer;
+}
+
+.nightMode td {
+	border-color: white;
+}
+
+.hauptgr > td {
+	border: none;
+	cursor: default;
+	color: #00f;
+}
+
+.nightMode .hauptgr > td {
+	color: #88f;
+}
+
+.nebengr > td {
+	border: none;
+	cursor: default;
+	color: rgb(0, 116, 184);
+	vertical-align: top;
+	padding-top: 1px;
+}
+
+.nightMode .nebengr > td {
+	color: #00BBFF;
+}
+
+.p:not(.e), .p {
+	border: none;
+	cursor: default;
+	color: #4a0;
+}
+
+.nightMode.p:not(.e), .nightMode.p {
+	color: #6c0;
+}
+
+.a {
+	background: #f00a;
+}
+
+.l:not(.e), .r:not(.e) {
+	width: 42px;
+}
+
+.l:not(.e), .x:not(.e) {
+	border-right: 5px solid #008;
+}
+
+.l:not(.e), .x:not(.e) {
+	border-right: 5px solid #1af;
+}
+
+#nameTag {
+	font-size: 26px;
+}

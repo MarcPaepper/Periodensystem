@@ -1,4 +1,9 @@
-symbolsMn   = [[ "H",   "",   "",   "",   "",   "",   "",   "",   "",   "",   "",   "",   "",   "",   "",   "",   "", "He"],
+# create output folder if not exists
+import os
+if not os.path.exists("Output"):
+	os.makedirs("Output")
+
+symbolsMn   = [[ "H", "NT",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",   "", "He"],
 		       ["Li", "Be",   "",   "",   "",   "",   "",   "",   "",   "",   "",   "",  "B",  "C",  "N",  "O",  "F", "Ne"],
 		       ["Na", "Mg",   "",   "",   "",   "",   "",   "",   "",   "",   "",   "", "Al", "Si",  "P",  "S", "Cl", "Ar"],
 		       ["K",  "Ca", "Sc", "Ti",  "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr"],
@@ -130,8 +135,18 @@ englishNames = {
 	"Og": "Oganesson"
 }
 
-output = """
-<table id="Periodensystem">
+types = ["gLoc", "gName"]
+outputFiles = ["gLocTable", "gNameTable"]
+
+for type, outputFile in zip(types, outputFiles):
+	isGuessLoc = type == "gLoc"
+	isGuessName = type == "gName"
+
+	oct =  "onClick=" + "'flipToBack()'" if isGuessName else "'wrongPick(event)'" # meaning on click text
+	# hc  = "" if isGuessName else " hidden" # meaning hidden class
+	# ha  = "" if isGuessName else " class='hidden' " # meaning hidden attribute
+
+	output = f"""<table id="Periodensystem" class="{type}">
 	<tr class="hauptgr">
 		<td class="e"></td>
 		<td>I</td>
@@ -176,43 +191,58 @@ output = """
 		<td>18</td>
 	</tr>"""
 
-# add main group
-for i, td in enumerate(symbolsMn):
-	output += "\n\t<tr>\n\t\t<td class=\"p\">" + str(i+1) + "</td>"
-	for j, symbol in enumerate(td):
-		if symbol == "":
-			output += "\n\t\t<td class=\"e\"></td>"
-		else:
-			output += "\n\t\t<td>" + symbol + "</td>"
-	output += "\n\t</tr>"
+	# add main group
+	for i, td in enumerate(symbolsMn):
+		output += "\n\t<tr class='main'>\n\t\t<td class=\"p\">" + str(i+1) + "</td>"
+		for j, symbol in enumerate(td):
+			if symbol == "-":
+				continue
+			elif symbol == "":
+				output += "\n\t\t<td class=\"e\"></td>"
+			elif symbol == "NT":
+				output += "\n\t\t<td id='nameTagTD'"
+				output += " class='disabled'" if type == "gName" else ""
+				output += " colspan='15'>{{Name}}</td>"
+			else:
+				if ((i == 5 or i == 6) and j == 2): # add indicator for actinides and lactinides
+					output += f"\n\t\t<td class='l hidden' {oct}>" + symbol + "</td>"
+				elif ((i == 5 or i == 6) and j == 3):
+					output += f"\n\t\t<td class='r hidden' {oct}>" + symbol + "</td>"
+				else:
+					output += f"\n\t\t<td class='hidden' {oct}>" + symbol + "</td>"
+		output += "\n\t</tr>"
 
-# empty row
-output += "\n\t<tr>\n\t\t<td class=\"e\"></td>\n\t</tr>"
+	# empty row
+	output += "\n\t<tr>\n\t\t<td class=\"e\"></td>\n\t</tr>"
 
-# add lanthanides
-output += f"""
+	# add lanthanides
+	output += f"""
 	<tr>
 		<td class="e"></td>
 		<td class="p x" colspan=3>Lanthan.:</td>
-		<td class='r'>{symbolsXtra[0][0]}</td>"""
-for i in range(1, len(symbolsXtra[0])):
-	output += f"\n\t\t<td>{symbolsXtra[0][i]}</td>"
-output += "\n\t</tr>"
+		<td class='r hidden'{oct}>{symbolsXtra[0][0]}</td>"""
+	for i in range(1, len(symbolsXtra[0])):
+		output += f"\n\t\t<td class='hidden' {oct}>{symbolsXtra[0][i]}</td>"
+	output += "\n\t</tr>"
 
-# add actinides
-output += f"""
+	# add actinides
+	output += f"""
 	<tr>
 		<td class="e"></td>
 		<td class="p x" colspan=3>Actin.:</td>
-		<td class='r'>{symbolsXtra[1][0]}</td>"""
-for i in range(1, len(symbolsXtra[1])):
-	output += f"\n\t\t<td>{symbolsXtra[1][i]}</td>"
-output += "\n\t</tr>"
+		<td class='r hidden'{oct}>{symbolsXtra[1][0]}</td>"""
+	for i in range(1, len(symbolsXtra[1])):
+		output += f"\n\t\t<td class='hidden' {oct}>{symbolsXtra[1][i]}</td>"
+	output += "\n\t</tr>"
 
-output += "\n</table>"
+	output += "\n</table>"
 
-# write to file TableFull.html
-with open("TableFull.html", "w") as f:
-	f.write(output)
+	# clear file if exists
+	if os.path.exists(f"Output/{outputFile}.html"):
+		os.remove(f"Output/{outputFile}.html")
+
+	# write to file TableFull.html
+	with open(f"Output/{outputFile}.html", "w") as f:
+		f.write(output)
 
 print("Done!")

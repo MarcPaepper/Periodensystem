@@ -213,7 +213,7 @@ for type, outputFile in zip(types, outputFiles):
 		output += "\n\t</tr>"
 
 	# empty row
-	output += "\n\t<tr>\n\t\t<td class=\"e\"></td>\n\t</tr>"
+	output += "\n\t<tr>\n\t\t<td class=\"e\"></td><td class=\"e\"></td>\n\t</tr>"
 
 	# add lanthanides
 	output += f"""

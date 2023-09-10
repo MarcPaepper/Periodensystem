@@ -135,6 +135,9 @@ englishNames = {
 	"Og": "Oganesson"
 }
 
+# print the values of the dictionary
+print(englishNames.values())
+
 types = ["gLoc", "gName"]
 outputFiles = ["gLocTable", "gNameTable"]
 

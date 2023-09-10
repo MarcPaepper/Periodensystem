@@ -4,7 +4,7 @@ if not os.path.exists("Output"):
 	os.makedirs("Output")
 
 symbolsMn   = [[ "H", "NT",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",   "", "He"],
-		       ["Li", "Be",   "",   "",   "",   "",   "",   "",   "",   "",   "",   "",  "B",  "C",  "N",  "O",  "F", "Ne"],
+		       ["Li", "Be",   "",   "",   "",   "",   "",   "", "bc",  "-",   "",   "",  "B",  "C",  "N",  "O",  "F", "Ne"],
 		       ["Na", "Mg",   "",   "",   "",   "",   "",   "",   "",   "",   "",   "", "Al", "Si",  "P",  "S", "Cl", "Ar"],
 		       ["K",  "Ca", "Sc", "Ti",  "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr"],
 		       ["Rb", "Sr",  "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te",  "I", "Xe"],
@@ -142,7 +142,7 @@ for type, outputFile in zip(types, outputFiles):
 	isGuessLoc = type == "gLoc"
 	isGuessName = type == "gName"
 
-	oct =  "onClick=" + "'flipToBack()'" if isGuessName else "'wrongPick(event)'" # meaning on click text
+	oct =  "onClick=" + ("'flipToBack()'" if isGuessName else "'wrongPick(event)'") # meaning on click text
 	# hc  = "" if isGuessName else " hidden" # meaning hidden class
 	# ha  = "" if isGuessName else " class='hidden' " # meaning hidden attribute
 
@@ -196,13 +196,15 @@ for type, outputFile in zip(types, outputFiles):
 		output += "\n\t<tr class='main'>\n\t\t<td class=\"p\">" + str(i+1) + "</td>"
 		for j, symbol in enumerate(td):
 			if symbol == "-":
-				continue
-			elif symbol == "":
+				output += "\n\t\t<td style='display: none'></td>"
+			elif symbol == "": # meaning empty cell
 				output += "\n\t\t<td class=\"e\"></td>"
-			elif symbol == "NT":
+			elif symbol == "NT": # meaning name tag
 				output += "\n\t\t<td id='nameTagTD'"
 				output += " class='disabled'" if type == "gName" else ""
 				output += " colspan='15'>{{Name}}</td>"
+			elif symbol == "bc": # meaning big cell
+				output += "\n\t\t<td id='bigCell' class='e' colspan='2'></td>"
 			else:
 				if ((i == 5 or i == 6) and j == 2): # add indicator for actinides and lactinides
 					output += f"\n\t\t<td class='l hidden' {oct}>" + symbol + "</td>"

@@ -3,7 +3,7 @@ import os
 if not os.path.exists("Output"):
 	os.makedirs("Output")
 
-symbolsMn   = [[ "H", "NT",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",   "", "He"],
+symbolsMn   = [[ "H",   "",  "NT",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-", "-",   "", "He"],
 		       ["Li", "Be",   "",   "",   "",   "",   "",   "", "bc",  "-",   "",   "",  "B",  "C",  "N",  "O",  "F", "Ne"],
 		       ["Na", "Mg",   "",   "",   "",   "",   "",   "",   "",   "",   "",   "", "Al", "Si",  "P",  "S", "Cl", "Ar"],
 		       ["K",  "Ca", "Sc", "Ti",  "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr"],
@@ -135,9 +135,6 @@ englishNames = {
 	"Og": "Oganesson"
 }
 
-# print the values of the dictionary
-print(englishNames.values())
-
 types = ["gLoc", "gName"]
 outputFiles = ["gLocTable", "gNameTable"]
 
@@ -205,7 +202,7 @@ for type, outputFile in zip(types, outputFiles):
 			elif symbol == "NT": # meaning name tag
 				output += "\n\t\t<td id='nameTagTD'"
 				output += " class='disabled'" if type == "gName" else ""
-				output += " colspan='15'>{{Name}}</td>"
+				output += " colspan='14'>{{Name}}</td>"
 			elif symbol == "bc": # meaning big cell
 				output += "\n\t\t<td id='bigCell' class='e' colspan='2'></td>"
 			else:

@@ -1,4 +1,7 @@
 # create output folder if not exists
+import math
+import json
+import matplotlib.pyplot as plt
 import os
 if not os.path.exists("Output"):
 	os.makedirs("Output")
@@ -134,9 +137,40 @@ englishNames = {
 	"Ts": "Tennessine",
 	"Og": "Oganesson"
 }
+englishNamesRev = {v: k for k, v in englishNames.items()}
 
-types = ["gLoc", "gName"]
-outputFiles = ["gLocTable", "gNameTable"]
+# Output/Wikiviews.json is formatted like this:
+# {
+#   "Hydrogen": 123,
+#   "Helium": 99,
+#   "Lithium": 31,
+#   ...
+# }
+with open("Output/Wikiviews.json", "r") as f:
+	wLengths = json.load(f)
+
+
+color_map = plt.get_cmap("magma")
+colorsMagma = [color_map(i) for i in range(256)]
+# scale the first three values of each tuple by 255
+colorsMagma = [(int(r*255), int(g*255), int(b*255)) for r, g, b, a in colorsMagma]
+
+# log the values
+wLengthsLog = {}
+for key in wLengths:
+	wLengthsLog[key] = math.log(wLengths[key])
+
+# normalize wLengths to min(wLengths) - max(wLengths) to 0-255 in a new dictionary
+wLengths256 = {}
+max = max(wLengthsLog.values())
+min = min(wLengthsLog.values())
+diff = max - min
+
+for key in wLengthsLog:
+	wLengths256[key] = int((wLengthsLog[key] - min) / diff * 255)
+
+types = ["gLoc", "gName", "visWiki"]
+outputFiles = ["gLocTable", "gNameTable", "wikiViews"]
 
 for type, outputFile in zip(types, outputFiles):
 	isGuessLoc = type == "gLoc"
@@ -191,6 +225,9 @@ for type, outputFile in zip(types, outputFiles):
 		<td>18</td>
 	</tr>"""
 
+	col = ""
+	addTxt = ""
+	
 	# add main group
 	for i, td in enumerate(symbolsMn):
 		output += "\n\t<tr class='main'>\n\t\t<td class=\"p\">" + str(i+1) + "</td>"
@@ -206,38 +243,66 @@ for type, outputFile in zip(types, outputFiles):
 			elif symbol == "bc": # meaning big cell
 				output += "\n\t\t<td id='bigCell' class='e' colspan='2'></td>"
 			else:
+				# add color if in wiki mode
+				if type == "visWiki":
+					col = f" style='background-color: rgb{colorsMagma[wLengths256[englishNames[symbol]]]}'"
+					addTxt = f"<br><span class='views'>{wLengths[englishNames[symbol]] // 1000}k</span>"
 				if ((i == 5 or i == 6) and j == 2): # add indicator for actinides and lactinides
-					output += f"\n\t\t<td class='l hidden' {oct}>" + symbol + "</td>"
+					output += f"\n\t\t<td class='l hidden' {oct}{col}>{symbol}{addTxt}</td>"
 				elif ((i == 5 or i == 6) and j == 3):
-					output += f"\n\t\t<td class='r hidden' {oct}>" + symbol + "</td>"
+					output += f"\n\t\t<td class='r hidden' {oct}{col}>{symbol}{addTxt}</td>"
 				else:
-					output += f"\n\t\t<td class='hidden' {oct}>" + symbol + "</td>"
+					output += f"\n\t\t<td class='hidden' {oct}{col}>{symbol}{addTxt}</td>"
 		output += "\n\t</tr>"
 
 	# empty row
-	output += "\n\t<tr>\n\t\t<td class=\"e\"></td><td class=\"e\"></td>\n\t</tr>"
+	output += "\n\t<tr id='emptyRow'>\n\t\t<td class=\"e\"></td><td class=\"e\"></td>\n\t</tr>"
+
 
 	# add lanthanides
+	if type == "visWiki":
+		col = f" style='background-color: rgb{colorsMagma[wLengths256[englishNames[symbolsXtra[0][0]]]]}'"
+		addTxt = f"<br><span class='views'>{wLengths[englishNames[symbolsXtra[0][0]]] // 1000}k</span>"
 	output += f"""
 	<tr>
 		<td class="e"></td>
 		<td class="p x" colspan=3>Lanthan.:</td>
-		<td class='r hidden'{oct}>{symbolsXtra[0][0]}</td>"""
+		<td class='r hidden'{oct}{col}>{symbolsXtra[0][0]}{addTxt}</td>"""
+		
 	for i in range(1, len(symbolsXtra[0])):
-		output += f"\n\t\t<td class='hidden' {oct}>{symbolsXtra[0][i]}</td>"
+		symbol = symbolsXtra[0][i]
+		
+		# add color if in wiki mode
+		if type == "visWiki":
+			col = f" style='background-color: rgb{colorsMagma[wLengths256[englishNames[symbol]]]}'"
+			addTxt = f"<br><span class='views'>{wLengths[englishNames[symbol]] // 1000}k</span>"
+		output += f"\n\t\t<td class='hidden' {oct}{col}>{symbol}{addTxt}</td>"
 	output += "\n\t</tr>"
 
+
 	# add actinides
+	if type == "visWiki":
+		col = f" style='background-color: rgb{colorsMagma[wLengths256[englishNames[symbolsXtra[1][0]]]]}'"
+		addTxt = f"<br><span class='views'>{wLengths[englishNames[symbolsXtra[1][0]]] // 1000}k</span>"
 	output += f"""
 	<tr>
 		<td class="e"></td>
 		<td class="p x" colspan=3>Actin.:</td>
-		<td class='r hidden'{oct}>{symbolsXtra[1][0]}</td>"""
+		<td class='r hidden'{oct}{col}>{symbolsXtra[1][0]}{addTxt}</td>"""
+		
 	for i in range(1, len(symbolsXtra[1])):
-		output += f"\n\t\t<td class='hidden' {oct}>{symbolsXtra[1][i]}</td>"
+		symbol = symbolsXtra[1][i]
+		
+		# add color if in wiki mode
+		if type == "visWiki":
+			col = f" style='background-color: rgb{colorsMagma[wLengths256[englishNames[symbol]]]}'"
+			addTxt = f"<br><span class='views'>{wLengths[englishNames[symbol]] // 1000}k</span>"
+		output += f"\n\t\t<td class='hidden' {oct}{col}>{symbol}{addTxt}</td>"
 	output += "\n\t</tr>"
 
+
 	output += "\n</table>"
+
 
 	# clear file if exists
 	if os.path.exists(f"Output/{outputFile}.html"):

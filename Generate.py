@@ -1,5 +1,6 @@
 # create output folder if not exists
 import math
+import copy
 import json
 import matplotlib.pyplot as plt
 import os
@@ -149,6 +150,47 @@ englishNamesRev = {v: k for k, v in englishNames.items()}
 with open("Output/Wikiviews.json", "r") as f:
 	wLengths = json.load(f)
 
+# calculate score for each element, which is given by the number of views on wikipedia
+# + the average of neighboring elements (up and down + left and right (also if in the next period or at the lanthanides/actinides boundaries))
+scores = copy.deepcopy(wLengths)
+
+for name in scores:
+	symbol = englishNamesRev[name]
+	
+	# find index in symbolsMn or symbolsXtra
+	xtra = True
+	i = 0
+	j = 0
+	for i in range(len(symbolsMn)):
+		if symbol in symbolsMn[i]:
+			j = symbolsMn[i].index(symbol)
+			xtra = False
+			break
+	if xtra:
+		for i in range(len(symbolsXtra)):
+			if symbol in symbolsXtra[i]:
+				j = symbolsXtra[i].index(symbol)
+				break
+	
+	numberOfNeighbors = 0
+	neighborSum = 0
+	
+	# upper neighbor
+	if (i > 0):
+		upperNeighborSymbol = (symbolsXtra if xtra else symbolsMn)[i-1][j]
+		if (upperNeighborSymbol != "" and upperNeighborSymbol != "-"):
+			numberOfNeighbors += 1
+			neighborSum += wLengths[englishNames[upperNeighborSymbol]]
+	# lower neighbor
+	maxI = len(symbolsXtra) if xtra else len(symbolsMn)
+	if (i < maxI-1):
+		lowerNeighborSymbol = (symbolsXtra if xtra else symbolsMn)[i+1][j]
+		if (lowerNeighborSymbol != "" and lowerNeighborSymbol != "-"):
+			numberOfNeighbors += 1
+			neighborSum += wLengths[englishNames[lowerNeighborSymbol]]
+	
+	avg = neighborSum / numberOfNeighbors if numberOfNeighbors > 0 else 0
+	scores[name] += avg
 
 color_map = plt.get_cmap("magma")
 colorsMagma = [color_map(i) for i in range(256)]
@@ -157,24 +199,37 @@ colorsMagma = [(int(r*255), int(g*255), int(b*255)) for r, g, b, a in colorsMagm
 
 # log the values
 wLengthsLog = {}
+scoresLog = {}
 for key in wLengths:
 	wLengthsLog[key] = math.log(wLengths[key])
+	scoresLog[key] = math.log(scores[key])
 
 # normalize wLengths to min(wLengths) - max(wLengths) to 0-255 in a new dictionary
 wLengths256 = {}
-max = max(wLengthsLog.values())
-min = min(wLengthsLog.values())
-diff = max - min
+maxV = max(wLengthsLog.values())
+minV = min(wLengthsLog.values())
+diff = maxV - minV
 
 for key in wLengthsLog:
-	wLengths256[key] = int((wLengthsLog[key] - min) / diff * 255)
+	wLengths256[key] = int((wLengthsLog[key] - minV) / diff * 255)
+	
+scores256 = {}
+maxV = max(scoresLog.values())
+minV = min(scoresLog.values())
+diff = maxV - minV
 
-types = ["gLoc", "gName", "visWiki"]
-outputFiles = ["gLocTable", "gNameTable", "wikiViews"]
+for key in wLengthsLog:
+	scores256[key] = int((wLengthsLog[key] - minV) / diff * 255)
+
+types = ["gLoc", "gName", "visWiki", "scores"]
+outputFiles = ["gLocTable", "gNameTable", "wikiViews", "scores"]
 
 for type, outputFile in zip(types, outputFiles):
 	isGuessLoc = type == "gLoc"
 	isGuessName = type == "gName"
+	isVis = type == "visWiki" or type == "scores"
+	
+	lookup = wLengths256 if type == "visWiki" else scores
 
 	oct =  "onClick=" + ("'flipToBack()'" if isGuessName else "'wrongPick(event)'") # meaning on click text
 	# hc  = "" if isGuessName else " hidden" # meaning hidden class
@@ -243,9 +298,10 @@ for type, outputFile in zip(types, outputFiles):
 			elif symbol == "bc": # meaning big cell
 				output += "\n\t\t<td id='bigCell' class='e' colspan='2'></td>"
 			else:
-				# add color if in wiki mode
+				# add color if in vis mode
+				if isVis:
+					col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbol]]]}'"
 				if type == "visWiki":
-					col = f" style='background-color: rgb{colorsMagma[wLengths256[englishNames[symbol]]]}'"
 					addTxt = f"<br><span class='views'>{wLengths[englishNames[symbol]] // 1000}k</span>"
 				if ((i == 5 or i == 6) and j == 2): # add indicator for actinides and lactinides
 					output += f"\n\t\t<td class='l hidden' {oct}{col}>{symbol}{addTxt}</td>"
@@ -260,9 +316,10 @@ for type, outputFile in zip(types, outputFiles):
 
 
 	# add lanthanides
+	if isVis:
+		col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbol]]]}'"
 	if type == "visWiki":
-		col = f" style='background-color: rgb{colorsMagma[wLengths256[englishNames[symbolsXtra[0][0]]]]}'"
-		addTxt = f"<br><span class='views'>{wLengths[englishNames[symbolsXtra[0][0]]] // 1000}k</span>"
+		addTxt = f"<br><span class='views'>{wLengths[englishNames[symbol]] // 1000}k</span>"
 	output += f"""
 	<tr>
 		<td class="e"></td>
@@ -272,18 +329,20 @@ for type, outputFile in zip(types, outputFiles):
 	for i in range(1, len(symbolsXtra[0])):
 		symbol = symbolsXtra[0][i]
 		
-		# add color if in wiki mode
+		# add color if in vis mode
+		if isVis:
+			col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbol]]]}'"
 		if type == "visWiki":
-			col = f" style='background-color: rgb{colorsMagma[wLengths256[englishNames[symbol]]]}'"
 			addTxt = f"<br><span class='views'>{wLengths[englishNames[symbol]] // 1000}k</span>"
 		output += f"\n\t\t<td class='hidden' {oct}{col}>{symbol}{addTxt}</td>"
 	output += "\n\t</tr>"
 
 
 	# add actinides
+	if isVis:
+		col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbol]]]}'"
 	if type == "visWiki":
-		col = f" style='background-color: rgb{colorsMagma[wLengths256[englishNames[symbolsXtra[1][0]]]]}'"
-		addTxt = f"<br><span class='views'>{wLengths[englishNames[symbolsXtra[1][0]]] // 1000}k</span>"
+		addTxt = f"<br><span class='views'>{wLengths[englishNames[symbol]] // 1000}k</span>"
 	output += f"""
 	<tr>
 		<td class="e"></td>
@@ -293,9 +352,10 @@ for type, outputFile in zip(types, outputFiles):
 	for i in range(1, len(symbolsXtra[1])):
 		symbol = symbolsXtra[1][i]
 		
-		# add color if in wiki mode
+		# add color if in vis mode
+		if isVis:
+			col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbol]]]}'"
 		if type == "visWiki":
-			col = f" style='background-color: rgb{colorsMagma[wLengths256[englishNames[symbol]]]}'"
 			addTxt = f"<br><span class='views'>{wLengths[englishNames[symbol]] // 1000}k</span>"
 		output += f"\n\t\t<td class='hidden' {oct}{col}>{symbol}{addTxt}</td>"
 	output += "\n\t</tr>"

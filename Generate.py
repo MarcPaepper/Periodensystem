@@ -7,7 +7,7 @@ import os
 if not os.path.exists("Output"):
 	os.makedirs("Output")
 
-symbolsMn   = [[ "H",   "",  "NT",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-", "-",   "", "He"],
+symbolsMn   = [[ "H",   "", "NT",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",   "", "He"],
 		       ["Li", "Be",   "",   "",   "",   "",   "",   "", "bc",  "-",   "",   "",  "B",  "C",  "N",  "O",  "F", "Ne"],
 		       ["Na", "Mg",   "",   "",   "",   "",   "",   "",   "",   "",   "",   "", "Al", "Si",  "P",  "S", "Cl", "Ar"],
 		       ["K",  "Ca", "Sc", "Ti",  "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr"],
@@ -17,6 +17,18 @@ symbolsMn   = [[ "H",   "",  "NT",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-
 
 symbolsXtra = [["Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu"],
 			   ["Th", "Pa",  "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr"]]
+
+# Meaning symbols atomic number list
+sanl = ["H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne",
+		"Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar",
+		"K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr",
+		"Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te",  "I", "Xe",
+		"Cs", "Ba", "La",
+		"Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu",
+		"Hf", "Ta",  "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Tl", "Pb", "Bi", "Po", "At", "Rn",
+		"Fr", "Ra", "Ac",
+		"Th", "Pa",  "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr",
+		"Rf", "Db", "Sg", "Bh", "Hs", "Mt", "Ds", "Rg", "Cn", "Nh", "Fl", "Mc", "Lv", "Ts", "Og"]
 
 englishNames = {
 	"H": "Hydrogen",
@@ -148,11 +160,11 @@ englishNamesRev = {v: k for k, v in englishNames.items()}
 #   ...
 # }
 with open("Output/Wikiviews.json", "r") as f:
-	wLengths = json.load(f)
+	wViews = json.load(f)
 
 # calculate score for each element, which is given by the number of views on wikipedia
 # + the average of neighboring elements (up and down + left and right (also if in the next period or at the lanthanides/actinides boundaries))
-scores = copy.deepcopy(wLengths)
+scores = copy.deepcopy(wViews)
 
 for name in scores:
 	symbol = englishNamesRev[name]
@@ -180,17 +192,32 @@ for name in scores:
 		upperNeighborSymbol = (symbolsXtra if xtra else symbolsMn)[i-1][j]
 		if (upperNeighborSymbol != "" and upperNeighborSymbol != "-"):
 			numberOfNeighbors += 1
-			neighborSum += wLengths[englishNames[upperNeighborSymbol]]
+			neighborSum += wViews[englishNames[upperNeighborSymbol]]
+	
 	# lower neighbor
 	maxI = len(symbolsXtra) if xtra else len(symbolsMn)
 	if (i < maxI-1):
 		lowerNeighborSymbol = (symbolsXtra if xtra else symbolsMn)[i+1][j]
 		if (lowerNeighborSymbol != "" and lowerNeighborSymbol != "-"):
 			numberOfNeighbors += 1
-			neighborSum += wLengths[englishNames[lowerNeighborSymbol]]
+			neighborSum += wViews[englishNames[lowerNeighborSymbol]]
 	
-	avg = neighborSum / numberOfNeighbors if numberOfNeighbors > 0 else 0
-	scores[name] += avg
+	index = sanl.index(symbol)
+	
+	# left neighbor
+	if index > 0:
+		numberOfNeighbors += 1
+		leftNeighborSymbol = sanl[index-1]
+		neighborSum += wViews[englishNames[leftNeighborSymbol]]
+	
+	# right neighbor
+	if index < len(sanl) - 1:
+		numberOfNeighbors += 1
+		rightNeighborSymbol = sanl[index+1]
+		neighborSum += wViews[englishNames[rightNeighborSymbol]]
+	
+	avg = neighborSum / numberOfNeighbors
+	scores[name] = int((avg + wViews[name])/2) / ((index + 1) ** (1/2) + 5)
 
 color_map = plt.get_cmap("magma")
 colorsMagma = [color_map(i) for i in range(256)]
@@ -198,28 +225,28 @@ colorsMagma = [color_map(i) for i in range(256)]
 colorsMagma = [(int(r*255), int(g*255), int(b*255)) for r, g, b, a in colorsMagma]
 
 # log the values
-wLengthsLog = {}
+wViewsLog = {}
 scoresLog = {}
-for key in wLengths:
-	wLengthsLog[key] = math.log(wLengths[key])
+for key in wViews:
+	wViewsLog[key] = math.log(wViews[key])
 	scoresLog[key] = math.log(scores[key])
 
 # normalize wLengths to min(wLengths) - max(wLengths) to 0-255 in a new dictionary
-wLengths256 = {}
-maxV = max(wLengthsLog.values())
-minV = min(wLengthsLog.values())
+wViews256 = {}
+maxV = max(wViewsLog.values())
+minV = min(wViewsLog.values())
 diff = maxV - minV
 
-for key in wLengthsLog:
-	wLengths256[key] = int((wLengthsLog[key] - minV) / diff * 255)
+for key in wViewsLog:
+	wViews256[key] = int((wViewsLog[key] - minV) / diff * 255)
 	
 scores256 = {}
 maxV = max(scoresLog.values())
 minV = min(scoresLog.values())
 diff = maxV - minV
 
-for key in wLengthsLog:
-	scores256[key] = int((wLengthsLog[key] - minV) / diff * 255)
+for key in wViewsLog:
+	scores256[key] = int((scoresLog[key] - minV) / diff * 255)
 
 types = ["gLoc", "gName", "visWiki", "scores"]
 outputFiles = ["gLocTable", "gNameTable", "wikiViews", "scores"]
@@ -229,7 +256,8 @@ for type, outputFile in zip(types, outputFiles):
 	isGuessName = type == "gName"
 	isVis = type == "visWiki" or type == "scores"
 	
-	lookup = wLengths256 if type == "visWiki" else scores
+	lookup = wViews256 if type == "visWiki" else scores256
+	lookupD = wViews if type == "visWiki" else scores
 
 	oct =  "onClick=" + ("'flipToBack()'" if isGuessName else "'wrongPick(event)'") # meaning on click text
 	# hc  = "" if isGuessName else " hidden" # meaning hidden class
@@ -301,8 +329,9 @@ for type, outputFile in zip(types, outputFiles):
 				# add color if in vis mode
 				if isVis:
 					col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbol]]]}'"
+					addTxt = f"<br><span class='views'>{lookupD[englishNames[symbol]] // 1000}k</span>"
 				if type == "visWiki":
-					addTxt = f"<br><span class='views'>{wLengths[englishNames[symbol]] // 1000}k</span>"
+					addTxt = f"<br><span class='views'>{wViews[englishNames[symbol]] // 1000}k</span>"
 				if ((i == 5 or i == 6) and j == 2): # add indicator for actinides and lactinides
 					output += f"\n\t\t<td class='l hidden' {oct}{col}>{symbol}{addTxt}</td>"
 				elif ((i == 5 or i == 6) and j == 3):
@@ -317,9 +346,10 @@ for type, outputFile in zip(types, outputFiles):
 
 	# add lanthanides
 	if isVis:
-		col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbol]]]}'"
+		col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbolsXtra[0][0]]]]}'"
+		addTxt = f"<br><span class='views'>{lookupD[englishNames[symbolsXtra[0][0]]] // 1000}k</span>"
 	if type == "visWiki":
-		addTxt = f"<br><span class='views'>{wLengths[englishNames[symbol]] // 1000}k</span>"
+		addTxt = f"<br><span class='views'>{wViews[englishNames[symbolsXtra[0][0]]] // 1000}k</span>"
 	output += f"""
 	<tr>
 		<td class="e"></td>
@@ -332,17 +362,19 @@ for type, outputFile in zip(types, outputFiles):
 		# add color if in vis mode
 		if isVis:
 			col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbol]]]}'"
+			addTxt = f"<br><span class='views'>{lookupD[englishNames[symbol]] // 1000}k</span>"
 		if type == "visWiki":
-			addTxt = f"<br><span class='views'>{wLengths[englishNames[symbol]] // 1000}k</span>"
+			addTxt = f"<br><span class='views'>{wViews[englishNames[symbol]] // 1000}k</span>"
 		output += f"\n\t\t<td class='hidden' {oct}{col}>{symbol}{addTxt}</td>"
 	output += "\n\t</tr>"
 
 
 	# add actinides
 	if isVis:
-		col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbol]]]}'"
+		col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbolsXtra[1][0]]]]}'"
+		addTxt = f"<br><span class='views'>{lookupD[englishNames[symbolsXtra[1][0]]] // 1000}k</span>"
 	if type == "visWiki":
-		addTxt = f"<br><span class='views'>{wLengths[englishNames[symbol]] // 1000}k</span>"
+		addTxt = f"<br><span class='views'>{wViews[englishNames[symbolsXtra[1][0]]] // 1000}k</span>"
 	output += f"""
 	<tr>
 		<td class="e"></td>
@@ -355,8 +387,9 @@ for type, outputFile in zip(types, outputFiles):
 		# add color if in vis mode
 		if isVis:
 			col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbol]]]}'"
+			addTxt = f"<br><span class='views'>{lookupD[englishNames[symbol]] // 1000}k</span>"
 		if type == "visWiki":
-			addTxt = f"<br><span class='views'>{wLengths[englishNames[symbol]] // 1000}k</span>"
+			addTxt = f"<br><span class='views'>{wViews[englishNames[symbol]] // 1000}k</span>"
 		output += f"\n\t\t<td class='hidden' {oct}{col}>{symbol}{addTxt}</td>"
 	output += "\n\t</tr>"
 

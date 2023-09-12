@@ -1,0 +1,946 @@
+{
+    "Ac": {
+        "en": "actinium",
+        "fr": "actinium",
+        "de": "Actinium",
+        "it": "attinio",
+        "pt": "act\u00c3\u00adnio",
+        "es": "actinio"
+    },
+    "Al": {
+        "en": "aluminium",
+        "fr": "aluminium",
+        "de": "Aluminium",
+        "it": "alluminio",
+        "pt": "alum\u00c3\u00adnio",
+        "es": "aluminio"
+    },
+    "Am": {
+        "en": "americium",
+        "fr": "am\u00c3\u00a9ricium",
+        "de": "Americium",
+        "it": "americio",
+        "pt": "amer\u00c3\u00adcio",
+        "es": "americio"
+    },
+    "Sb": {
+        "en": "antimony",
+        "fr": "antimoine",
+        "de": "Antimon",
+        "it": "antimonio",
+        "pt": "antim\u00c3\u00b3nio",
+        "es": "antimonio"
+    },
+    "Ar": {
+        "en": "argon",
+        "fr": "argon",
+        "de": "Argon",
+        "it": "argo",
+        "pt": "arg\u00c3\u00b4nio",
+        "es": "arg\u00c3\u00b3n"
+    },
+    "As": {
+        "en": "arsenic",
+        "fr": "arsenic",
+        "de": "Arsen",
+        "it": "arsenico",
+        "pt": "ars\u00c3\u00a9nic",
+        "es": "ars\u00c3\u00a9nico"
+    },
+    "At": {
+        "en": "astatine",
+        "fr": "astate",
+        "de": "Astat",
+        "it": "astato",
+        "pt": "astato",
+        "es": "astato"
+    },
+    "Ba": {
+        "en": "barium",
+        "fr": "baryum",
+        "de": "Barium",
+        "it": "bario",
+        "pt": "b\u00c3\u00a1rio",
+        "es": "bario"
+    },
+    "Bk": {
+        "en": "berkelium",
+        "fr": "berk\u00c3\u00a9lium",
+        "de": "Berkelium",
+        "it": "berkelio",
+        "pt": "berqu\u00c3\u00a9lio",
+        "es": "berkelio"
+    },
+    "Be": {
+        "en": "beryllium",
+        "fr": "b\u00c3\u00a9ryllium",
+        "de": "Beryllium",
+        "it": "berillio",
+        "pt": "ber\u00c3\u00adlio",
+        "es": "berilio"
+    },
+    "Bi": {
+        "en": "bismuth",
+        "fr": "bismuth",
+        "de": "Bismut",
+        "it": "bismuto",
+        "pt": "bismuto",
+        "es": "bismuto"
+    },
+    "Bh": {
+        "en": "bohrium",
+        "fr": "bohrium",
+        "de": "Bohrium",
+        "it": "bohrio",
+        "pt": "b\u00c3\u00b3hrio",
+        "es": "bohrio"
+    },
+    "B": {
+        "en": "boron",
+        "fr": "bore",
+        "de": "Bor",
+        "it": "boro",
+        "pt": "boro",
+        "es": "boro"
+    },
+    "Br": {
+        "en": "bromine",
+        "fr": "brome",
+        "de": "Brom",
+        "it": "bromo",
+        "pt": "bromo",
+        "es": "bromo"
+    },
+    "Cd": {
+        "en": "cadmium",
+        "fr": "cadmium",
+        "de": "Cadmium",
+        "it": "cadmio",
+        "pt": "c\u00c3\u00a1dmio",
+        "es": "cadmio"
+    },
+    "Ca": {
+        "en": "calcium",
+        "fr": "calcium",
+        "de": "Calcium",
+        "it": "calcio",
+        "pt": "c\u00c3\u00a1lcio",
+        "es": "calcio"
+    },
+    "Cf": {
+        "en": "californium",
+        "fr": "californium",
+        "de": "Californium",
+        "it": "californio",
+        "pt": "calif\u00c3\u00b3rnio",
+        "es": "californio"
+    },
+    "C": {
+        "en": "carbon",
+        "fr": "carbone",
+        "de": "Kohlenstoff",
+        "it": "carbonio",
+        "pt": "carbono",
+        "es": "carbono"
+    },
+    "Ce": {
+        "en": "cerium",
+        "fr": "c\u00c3\u00a9rium",
+        "de": "Cer",
+        "it": "cerio",
+        "pt": "c\u00c3\u00a9rio",
+        "es": "cerio"
+    },
+    "Cs": {
+        "en": "caesium",
+        "fr": "c\u00c3\u00a9sium",
+        "de": "Caesium",
+        "it": "cesio",
+        "pt": "c\u00c3\u00a9sio",
+        "es": "cesio"
+    },
+    "Cl": {
+        "en": "chlorine",
+        "fr": "chlore",
+        "de": "Chlor",
+        "it": "cloro",
+        "pt": "cloro",
+        "es": "cloro"
+    },
+    "Cr": {
+        "en": "chromium",
+        "fr": "chrome",
+        "de": "Chrom",
+        "it": "cromo",
+        "pt": "cr\u00c3\u00b3mio",
+        "es": "cromo"
+    },
+    "Co": {
+        "en": "cobalt",
+        "fr": "cobalt",
+        "de": "Kobalt",
+        "it": "cobalto",
+        "pt": "cobalto",
+        "es": "cobalto"
+    },
+    "Cn": {
+        "en": "copernicium",
+        "fr": "copernicium",
+        "de": "Copernicium",
+        "it": "copernicio",
+        "pt": "copern\u00c3\u00adcio",
+        "es": "copernicio"
+    },
+    "Cu": {
+        "en": "copper",
+        "fr": "cuivre",
+        "de": "Kupfer",
+        "it": "rame",
+        "pt": "cobre",
+        "es": "cobre"
+    },
+    "Cm": {
+        "en": "curium",
+        "fr": "curium",
+        "de": "Curium",
+        "it": "curio",
+        "pt": "curio",
+        "es": "curio"
+    },
+    "Ds": {
+        "en": "darmstadtium",
+        "fr": "darmstadtium",
+        "de": "Darmstadtium",
+        "it": "darmstadtio",
+        "pt": "darmst\u00c3\u00a1dtio",
+        "es": "darmstatio"
+    },
+    "Db": {
+        "en": "dubnium",
+        "fr": "dubnium",
+        "de": "Dubnium",
+        "it": "dubnio",
+        "pt": "d\u00c3\u00babnio",
+        "es": "dubnio"
+    },
+    "Dy": {
+        "en": "dysprosium",
+        "fr": "dysprosium",
+        "de": "Dysprosium",
+        "it": "disprosio",
+        "pt": "dispr\u00c3\u00b3sio",
+        "es": "disprosio"
+    },
+    "Es": {
+        "en": "einsteinium",
+        "fr": "einsteinium",
+        "de": "Einsteinium",
+        "it": "einsteinio",
+        "pt": "einstenio",
+        "es": "einstenio"
+    },
+    "Er": {
+        "en": "erbium",
+        "fr": "erbium",
+        "de": "Erbium",
+        "it": "erbio",
+        "pt": "\u00c3\u00a9rbio",
+        "es": "erbio"
+    },
+    "Eu": {
+        "en": "europium",
+        "fr": "europium",
+        "de": "Europium",
+        "it": "europio",
+        "pt": "eur\u00c3\u00b3pio",
+        "es": "europio"
+    },
+    "Fm": {
+        "en": "fermium",
+        "fr": "fermium",
+        "de": "Fermium",
+        "it": "fermio",
+        "pt": "fermio",
+        "es": "fermio"
+    },
+    "Fl": {
+        "en": "flerovium",
+        "fr": "fl\u00c3\u00a9rovium",
+        "de": "Flerovium",
+        "it": "flerovio",
+        "pt": "Fler\u00c3\u00b3vio",
+        "es": "flerovio"
+    },
+    "F": {
+        "en": "fluorine",
+        "fr": "fluor",
+        "de": "Fluor",
+        "it": "fluoro",
+        "pt": "fl\u00c3\u00baor",
+        "es": "fluor"
+    },
+    "Fr": {
+        "en": "francium",
+        "fr": "francium",
+        "de": "Francium",
+        "it": "francio",
+        "pt": "fr\u00c3\u00a2ncio",
+        "es": "francio"
+    },
+    "Gd": {
+        "en": "gadolinium",
+        "fr": "gadolinium",
+        "de": "Gadolinium",
+        "it": "gadolinio",
+        "pt": "gadol\u00c3\u00adneo",
+        "es": "gadolinio"
+    },
+    "Ga": {
+        "en": "gallium",
+        "fr": "gallium",
+        "de": "Gallium",
+        "it": "gallio",
+        "pt": "g\u00c3\u00a1lio",
+        "es": "galio"
+    },
+    "Ge": {
+        "en": "germanium",
+        "fr": "germanium",
+        "de": "Germanium",
+        "it": "germanio",
+        "pt": "germ\u00c3\u00a2nio",
+        "es": "germanio"
+    },
+    "Au": {
+        "en": "gold",
+        "fr": "or",
+        "de": "Gold",
+        "it": "oro",
+        "pt": "ouro",
+        "es": "oro"
+    },
+    "Hf": {
+        "en": "hafnium",
+        "fr": "hafnium",
+        "de": "Hafnium",
+        "it": "afnio",
+        "pt": "h\u00c3\u00a1fnio",
+        "es": "hafnio"
+    },
+    "Hs": {
+        "en": "hassium",
+        "fr": "hassium",
+        "de": "Hassium",
+        "it": "hassio",
+        "pt": "h\u00c3\u00a1ssio",
+        "es": "hassio"
+    },
+    "He": {
+        "en": "helium",
+        "fr": "h\u00c3\u00a9lium",
+        "de": "Helium",
+        "it": "elio",
+        "pt": "h\u00c3\u00a9lio",
+        "es": "helio"
+    },
+    "Ho": {
+        "en": "holmium",
+        "fr": "holmium",
+        "de": "Holmium",
+        "it": "olmio",
+        "pt": "h\u00c3\u00b3lmio",
+        "es": "holmio"
+    },
+    "H": {
+        "en": "hydrogen",
+        "fr": "hydrog\u00c3\u00a8ne",
+        "de": "Wasserstoff",
+        "it": "idrogeno",
+        "pt": "hidrog\u00c3\u00aanio",
+        "es": "hidr\u00c3\u00b3geno"
+    },
+    "In": {
+        "en": "indium",
+        "fr": "indium",
+        "de": "Indium",
+        "it": "indio",
+        "pt": "\u00c3\u00adndio",
+        "es": "indio"
+    },
+    "I": {
+        "en": "iodine",
+        "fr": "iode",
+        "de": "Iod",
+        "it": "iodio",
+        "pt": "iodo",
+        "es": "yodo"
+    },
+    "Ir": {
+        "en": "iridium",
+        "fr": "iridium",
+        "de": "Iridium",
+        "it": "iridio",
+        "pt": "ir\u00c3\u00addio",
+        "es": "iridio"
+    },
+    "Fe": {
+        "en": "iron",
+        "fr": "fer",
+        "de": "Eisen",
+        "it": "ferro",
+        "pt": "ferro",
+        "es": "hierro"
+    },
+    "Kr": {
+        "en": "krypton",
+        "fr": "krypton",
+        "de": "Krypton",
+        "it": "cripto",
+        "pt": "cript\u00c3\u00b4nio",
+        "es": "kript\u00c3\u00b3n"
+    },
+    "La": {
+        "en": "lanthanum",
+        "fr": "lanthane",
+        "de": "Lanthan",
+        "it": "lantanio",
+        "pt": "lant\u00c3\u00a2nio",
+        "es": "lantano"
+    },
+    "Lr": {
+        "en": "lawrencium",
+        "fr": "lawrencium",
+        "de": "Lawrencium",
+        "it": "lawrentio",
+        "pt": "laur\u00c3\u00aancio",
+        "es": "lawrencio"
+    },
+    "Pb": {
+        "en": "lead",
+        "fr": "plomb",
+        "de": "Blei",
+        "it": "piombo",
+        "pt": "chumbo",
+        "es": "plomo"
+    },
+    "Lv": {
+        "en": "livermorium",
+        "fr": "livermorium",
+        "de": "Livermorium",
+        "it": "livermorio",
+        "pt": "liverm\u00c3\u00b3rio",
+        "es": "livermorio"
+    },
+    "Li": {
+        "en": "lithium",
+        "fr": "lithium",
+        "de": "Lithium",
+        "it": "litio",
+        "pt": "litio",
+        "es": "litio"
+    },
+    "Lu": {
+        "en": "lutetium",
+        "fr": "lutetium",
+        "de": "Lutetium",
+        "it": "lutezio",
+        "pt": "lut\u00c3\u00a9cio",
+        "es": "lutecio"
+    },
+    "Mg": {
+        "en": "magnesium",
+        "fr": "magn\u00c3\u00a9sium",
+        "de": "Magnesium",
+        "it": "magnesio",
+        "pt": "magn\u00c3\u00a9sio",
+        "es": "magnesio"
+    },
+    "Mn": {
+        "en": "manganese",
+        "fr": "mangan\u00c3\u00a8se",
+        "de": "Mangan",
+        "it": "manganese",
+        "pt": "mangan\u00c3\u00aas",
+        "es": "manganeso"
+    },
+    "Mt": {
+        "en": "meitnerium",
+        "fr": "meitnerium",
+        "de": "Meitnerium",
+        "it": "meitnerio",
+        "pt": "meitn\u00c3\u00a9rio",
+        "es": "meitnerio"
+    },
+    "Md": {
+        "en": "mendelevium",
+        "fr": "mendel\u00c3\u00a9vium",
+        "de": "Mendelevium",
+        "it": "mendelevio",
+        "pt": "mendel\u00c3\u00a9vio",
+        "es": "mendelevio"
+    },
+    "Hg": {
+        "en": "mercury",
+        "fr": "mercure",
+        "de": "Quecksilber",
+        "it": "mercurio",
+        "pt": "merc\u00c3\u00bario",
+        "es": "mercurio"
+    },
+    "Mo": {
+        "en": "molybdenum",
+        "fr": "molybd\u00c3\u00a8ne",
+        "de": "Molybd\u00c3\u00a4n",
+        "it": "molibdeno",
+        "pt": "molibd\u00c3\u00aanio",
+        "es": "molibdeno"
+    },
+    "Mc": {
+        "en": "moscovium",
+        "fr": "moscovium",
+        "de": "Moscovium",
+        "it": "moscovio",
+        "pt": "mosc\u00c3\u00b3vio",
+        "es": "moscovio"
+    },
+    "Nd": {
+        "en": "neodymium",
+        "fr": "n\u00c3\u00a9odyme",
+        "de": "Neodym",
+        "it": "neodimio",
+        "pt": "neod\u00c3\u00admio",
+        "es": "neodimio"
+    },
+    "Ne": {
+        "en": "neon",
+        "fr": "n\u00c3\u00a9on",
+        "de": "Neon",
+        "it": "neo",
+        "pt": "ne\u00c3\u00b4nio",
+        "es": "ne\u00c3\u00b3n"
+    },
+    "Np": {
+        "en": "neptunium",
+        "fr": "neptunium",
+        "de": "Neptunium",
+        "it": "nettunio",
+        "pt": "nept\u00c3\u00banio",
+        "es": "neptunio"
+    },
+    "Ni": {
+        "en": "nickel",
+        "fr": "nickel",
+        "de": "Nickel",
+        "it": "nichel",
+        "pt": "niquel",
+        "es": "niquel"
+    },
+    "Nh": {
+        "en": "nihonium",
+        "fr": "nihonium",
+        "de": "Nihonium",
+        "it": "nihonio",
+        "pt": "nihonium",
+        "es": "nihonio"
+    },
+    "Nb": {
+        "en": "niobium",
+        "fr": "niobium",
+        "de": "Niob",
+        "it": "niobio",
+        "pt": "ni\u00c3\u00b3bio",
+        "es": "niobio"
+    },
+    "N": {
+        "en": "nitrogen",
+        "fr": "azote",
+        "de": "Stickstoff",
+        "it": "azoto",
+        "pt": "nitrog\u00c3\u00aanio",
+        "es": "nitr\u00c3\u00b3geno"
+    },
+    "No": {
+        "en": "nobelium",
+        "fr": "nob\u00c3\u00a9lium",
+        "de": "Nobelium",
+        "it": "nobelio",
+        "pt": "nob\u00c3\u00a9lio",
+        "es": "nobelio"
+    },
+    "Os": {
+        "en": "osmium",
+        "fr": "osmium",
+        "de": "Osmium",
+        "it": "osmio",
+        "pt": "osmio",
+        "es": "osmio"
+    },
+    "O": {
+        "en": "oxygen",
+        "fr": "oxyg\u00c3\u00a8ne",
+        "de": "Sauerstoff",
+        "it": "ossigeno",
+        "pt": "oxig\u00c3\u00a9nio",
+        "es": "ox\u00c3\u00adgeno"
+    },
+    "Pd": {
+        "en": "palladium",
+        "fr": "palladium",
+        "de": "Palladium",
+        "it": "palladio",
+        "pt": "pal\u00c3\u00a1dio",
+        "es": "paladio"
+    },
+    "P": {
+        "en": "phosphorus",
+        "fr": "phosphore",
+        "de": "Phosphor",
+        "it": "fosforo",
+        "pt": "f\u00c3\u00b3sforo",
+        "es": "f\u00c3\u00b3sforo"
+    },
+    "Pt": {
+        "en": "platinum",
+        "fr": "platine",
+        "de": "Platin",
+        "it": "platino",
+        "pt": "platina",
+        "es": "platino"
+    },
+    "Pu": {
+        "en": "plutonium",
+        "fr": "plutonium",
+        "de": "Plutonium",
+        "it": "plutonio",
+        "pt": "plut\u00c3\u00b3nio",
+        "es": "plutonio"
+    },
+    "Po": {
+        "en": "polonium",
+        "fr": "polonium",
+        "de": "Polonium",
+        "it": "polonio",
+        "pt": "pol\u00c3\u00b3nio",
+        "es": "polonio"
+    },
+    "K": {
+        "en": "potassium",
+        "fr": "potassium",
+        "de": "Kalium",
+        "it": "potassio",
+        "pt": "pot\u00c3\u00a1ssio",
+        "es": "potasio"
+    },
+    "Pr": {
+        "en": "praseodymium",
+        "fr": "pras\u00c3\u00a9odyme",
+        "de": "Praseodym",
+        "it": "praseodimio",
+        "pt": "praseod\u00c3\u00admio",
+        "es": "praseodimio"
+    },
+    "Pm": {
+        "en": "promethium",
+        "fr": "prom\u00c3\u00a9thium",
+        "de": "Promethium",
+        "it": "prometo",
+        "pt": "prom\u00c3\u00a9cio",
+        "es": "prometio"
+    },
+    "Pa": {
+        "en": "protactinium",
+        "fr": "protactinium",
+        "de": "Protactinium",
+        "it": "protoattinio",
+        "pt": "protacn\u00c3\u00addio",
+        "es": "protactinio"
+    },
+    "Ra": {
+        "en": "radium",
+        "fr": "radium",
+        "de": "Radium",
+        "it": "radio",
+        "pt": "r\u00c3\u00a1dio",
+        "es": "radio"
+    },
+    "Rn": {
+        "en": "radon",
+        "fr": "radon",
+        "de": "Radon",
+        "it": "radon (emanio)",
+        "pt": "r\u00c3\u00a1don",
+        "es": "rad\u00c3\u00b3n"
+    },
+    "Re": {
+        "en": "rhenium",
+        "fr": "rh\u00c3\u00a9nium",
+        "de": "Rhenium",
+        "it": "renio",
+        "pt": "r\u00c3\u00a9nio",
+        "es": "renio"
+    },
+    "Rh": {
+        "en": "rhodium",
+        "fr": "rhodium",
+        "de": "Rhodium",
+        "it": "rodio",
+        "pt": "r\u00c3\u00b3dio",
+        "es": "rodio"
+    },
+    "Rg": {
+        "en": "roentgenium",
+        "fr": "roentgenium",
+        "de": "Roentgenium",
+        "it": "roentgenio",
+        "pt": "roentg\u00c3\u00aanio",
+        "es": "roentgenio"
+    },
+    "Rb": {
+        "en": "rubidium",
+        "fr": "rubidium",
+        "de": "Rubidium",
+        "it": "rubidio",
+        "pt": "rub\u00c3\u00addio",
+        "es": "rubidio"
+    },
+    "Ru": {
+        "en": "ruthenium",
+        "fr": "ruth\u00c3\u00a9nium",
+        "de": "Ruthenium",
+        "it": "rutenio",
+        "pt": "rut\u00c3\u00a9nio",
+        "es": "rutenio"
+    },
+    "Rf": {
+        "en": "rutherfordium",
+        "fr": "rutherfordium",
+        "de": "Rutherfordium",
+        "it": "rutherfordio",
+        "pt": "ruterf\u00c3\u00b3rdio",
+        "es": "rutherfordio"
+    },
+    "Sm": {
+        "en": "samarium",
+        "fr": "samarium",
+        "de": "Samarium",
+        "it": "samario",
+        "pt": "sam\u00c3\u00a1rio",
+        "es": "samario"
+    },
+    "Sc": {
+        "en": "scandium",
+        "fr": "scandium",
+        "de": "Scandium",
+        "it": "scandio",
+        "pt": "esc\u00c3\u00a2ndio",
+        "es": "escandio"
+    },
+    "Sg": {
+        "en": "seaborgium",
+        "fr": "seaborgium",
+        "de": "Seaborgium",
+        "it": "seaborgio",
+        "pt": "seab\u00c3\u00b3rgio",
+        "es": "seaborgio"
+    },
+    "Se": {
+        "en": "selenium",
+        "fr": "s\u00c3\u00a9l\u00c3\u00a9nium",
+        "de": "Selen",
+        "it": "selenio",
+        "pt": "sel\u00c3\u00a9nio",
+        "es": "selenio"
+    },
+    "Si": {
+        "en": "silicon",
+        "fr": "silicium",
+        "de": "Silicium",
+        "it": "silicio",
+        "pt": "sil\u00c3\u00adcio",
+        "es": "silicio"
+    },
+    "Ag": {
+        "en": "silver",
+        "fr": "argent",
+        "de": "Silber",
+        "it": "argento",
+        "pt": "prata",
+        "es": "plata"
+    },
+    "Na": {
+        "en": "sodium",
+        "fr": "sodium",
+        "de": "Natrium",
+        "it": "sodio",
+        "pt": "s\u00c3\u00b3dio",
+        "es": "sodio"
+    },
+    "Sr": {
+        "en": "strontium",
+        "fr": "strontium",
+        "de": "Strontium",
+        "it": "stronzio",
+        "pt": "estr\u00c3\u00b4ncio",
+        "es": "estroncio"
+    },
+    "S": {
+        "en": "sulfur",
+        "fr": "soufre",
+        "de": "Schwefel",
+        "it": "solfo",
+        "pt": "enxofre",
+        "es": "azufre"
+    },
+    "Ta": {
+        "en": "tantalum",
+        "fr": "tantale",
+        "de": "Tantal",
+        "it": "tantalio",
+        "pt": "t\u00c3\u00a2ntalo",
+        "es": "t\u00c3\u00a1ntalo"
+    },
+    "Tc": {
+        "en": "technetium",
+        "fr": "techn\u00c3\u00a9tium",
+        "de": "Technetium",
+        "it": "tecneto",
+        "pt": "tecn\u00c3\u00a9cio",
+        "es": "tecnecio"
+    },
+    "Te": {
+        "en": "tellurium",
+        "fr": "tellure",
+        "de": "Tellur",
+        "it": "tellurio",
+        "pt": "tel\u00c3\u00bario",
+        "es": "teluro"
+    },
+    "Ts": {
+        "en": "tennessine",
+        "fr": "tennesse",
+        "de": "Tenness",
+        "it": "tennesso",
+        "pt": "tenesso",
+        "es": "teneso"
+    },
+    "Tb": {
+        "en": "terbium",
+        "fr": "terbium",
+        "de": "Terbium",
+        "it": "terbio",
+        "pt": "t\u00c3\u00a9rbio",
+        "es": "terbio"
+    },
+    "Tl": {
+        "en": "thallium",
+        "fr": "thallium",
+        "de": "Thallium",
+        "it": "tallio",
+        "pt": "t\u00c3\u00a1lio",
+        "es": "talio"
+    },
+    "Th": {
+        "en": "thorium",
+        "fr": "thorium",
+        "de": "Thorium",
+        "it": "torio",
+        "pt": "t\u00c3\u00b3rio",
+        "es": "torio"
+    },
+    "Tm": {
+        "en": "thulium",
+        "fr": "thulium",
+        "de": "Thulium",
+        "it": "tulio",
+        "pt": "t\u00c3\u00balio",
+        "es": "tulio"
+    },
+    "Sn": {
+        "en": "tin",
+        "fr": "etain",
+        "de": "Zinn",
+        "it": "stagno",
+        "pt": "estanho",
+        "es": "esta\u00c3\u00b1o"
+    },
+    "Ti": {
+        "en": "titanium",
+        "fr": "titane",
+        "de": "Titan",
+        "it": "titanio",
+        "pt": "tit\u00c3\u00a2nio",
+        "es": "titanio"
+    },
+    "W": {
+        "en": "tungsten",
+        "fr": "tungst\u00c3\u00a8ne",
+        "de": "Wolfram",
+        "it": "wolframio",
+        "pt": "tungst\u00c3\u00a9nio",
+        "es": "wolframio"
+    },
+    "U": {
+        "en": "uranium",
+        "fr": "uranium",
+        "de": "Uran",
+        "it": "uranio",
+        "pt": "ur\u00c3\u00a2nio",
+        "es": "uranio"
+    },
+    "V": {
+        "en": "vanadium",
+        "fr": "vanadium",
+        "de": "Vanadium",
+        "it": "vanadio",
+        "pt": "van\u00c3\u00a1dio",
+        "es": "vanadio"
+    },
+    "Xe": {
+        "en": "xenon",
+        "fr": "x\u00c3\u00a9non",
+        "de": "Xenon",
+        "it": "xeno",
+        "pt": "x\u00c3\u00a9non",
+        "es": "xen\u00c3\u00b3n"
+    },
+    "Yb": {
+        "en": "ytterbium",
+        "fr": "ytterbium",
+        "de": "Ytterbium",
+        "it": "itterbio",
+        "pt": "it\u00c3\u00a9rbio",
+        "es": "yterbio"
+    },
+    "Y": {
+        "en": "yttrium",
+        "fr": "yttrium",
+        "de": "Yttrium",
+        "it": "ittrio",
+        "pt": "itrio",
+        "es": "ytrio"
+    },
+    "Zn": {
+        "en": "zinc",
+        "fr": "zinc",
+        "de": "Zink",
+        "it": "zinco",
+        "pt": "zinco",
+        "es": "cinc"
+    },
+    "Zr": {
+        "en": "zirconium",
+        "fr": "zirconium",
+        "de": "Zirkonium",
+        "it": "zirconio",
+        "pt": "zirc\u00c3\u00b3nio",
+        "es": "circonio"
+    },
+    "Og": {
+        "en": "oganesson",
+        "fr": "oganesson",
+        "de": "Oganesson",
+        "it": "oganesson",
+        "pt": "ogan\u00c3\u00a9sson",
+        "es": "oganes\u00c3\u00b3n"
+    }
+}

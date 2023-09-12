@@ -6,168 +6,49 @@ import matplotlib.pyplot as plt
 import os
 if not os.path.exists("Output"):
 	os.makedirs("Output")
+from Constants import *
 
-symbolsMn   = [[ "H",   "", "NT",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",  "-",   "", "He"],
-		       ["Li", "Be",   "",   "",   "",   "",   "",   "", "bc",  "-",   "",   "",  "B",  "C",  "N",  "O",  "F", "Ne"],
-		       ["Na", "Mg",   "",   "",   "",   "",   "",   "",   "",   "",   "",   "", "Al", "Si",  "P",  "S", "Cl", "Ar"],
-		       ["K",  "Ca", "Sc", "Ti",  "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr"],
-		       ["Rb", "Sr",  "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te",  "I", "Xe"],
-		       ["Cs", "Ba", "La", "Hf", "Ta",  "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Tl", "Pb", "Bi", "Po", "At", "Rn"],
-			   ["Fr", "Ra", "Ac", "Rf", "Db", "Sg", "Bh", "Hs", "Mt", "Ds", "Rg", "Cn", "Nh", "Fl", "Mc", "Lv", "Ts", "Og"]]
-
-symbolsXtra = [["Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu"],
-			   ["Th", "Pa",  "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr"]]
-
-# Meaning symbols atomic number list
-sanl = ["H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne",
-		"Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar",
-		"K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr",
-		"Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn", "Sb", "Te",  "I", "Xe",
-		"Cs", "Ba", "La",
-		"Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu",
-		"Hf", "Ta",  "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Tl", "Pb", "Bi", "Po", "At", "Rn",
-		"Fr", "Ra", "Ac",
-		"Th", "Pa",  "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr",
-		"Rf", "Db", "Sg", "Bh", "Hs", "Mt", "Ds", "Rg", "Cn", "Nh", "Fl", "Mc", "Lv", "Ts", "Og"]
-
-englishNames = {
-	"H": "Hydrogen",
-	"He": "Helium",
-	"Li": "Lithium",
-	"Be": "Beryllium",
-	"B" : "Boron",
-	"C" : "Carbon",
-	"N" : "Nitrogen",
-	"O" : "Oxygen",
-	"F" : "Fluorine",
-	"Ne": "Neon",
-	"Na": "Sodium",
-	"Mg": "Magnesium",
-	"Al": "Aluminium",
-	"Si": "Silicon",
-	"P" : "Phosphorus",
-	"S" : "Sulfur",
-	"Cl": "Chlorine",
-	"Ar": "Argon",
-	"K" : "Potassium",
-	"Ca": "Calcium",
-	"Sc": "Scandium",
-	"Ti": "Titanium",
-	"V" : "Vanadium",
-	"Cr": "Chromium",
-	"Mn": "Manganese",
-	"Fe": "Iron",
-	"Co": "Cobalt",
-	"Ni": "Nickel",
-	"Cu": "Copper",
-	"Zn": "Zinc",
-	"Ga": "Gallium",
-	"Ge": "Germanium",
-	"As": "Arsenic",
-	"Se": "Selenium",
-	"Br": "Bromine",
-	"Kr": "Krypton",
-	"Rb": "Rubidium",
-	"Sr": "Strontium",
-	"Y" : "Yttrium",
-	"Zr": "Zirconium",
-	"Nb": "Niobium",
-	"Mo": "Molybdenum",
-	"Tc": "Technetium",
-	"Ru": "Ruthenium",
-	"Rh": "Rhodium",
-	"Pd": "Palladium",
-	"Ag": "Silver",
-	"Cd": "Cadmium",
-	"In": "Indium",
-	"Sn": "Tin",
-	"Sb": "Antimony",
-	"Te": "Tellurium",
-	"I" : "Iodine",
-	"Xe": "Xenon",
-	"Cs": "Caesium",
-	"Ba": "Barium",
-	"La": "Lanthanum",
-	"Ce": "Cerium",
-	"Pr": "Praseodymium",
-	"Nd": "Neodymium",
-	"Pm": "Promethium",
-	"Sm": "Samarium",
-	"Eu": "Europium",
-	"Gd": "Gadolinium",
-	"Tb": "Terbium",
-	"Dy": "Dysprosium",
-	"Ho": "Holmium",
-	"Er": "Erbium",
-	"Tm": "Thulium",
-	"Yb": "Ytterbium",
-	"Lu": "Lutetium",
-	"Hf": "Hafnium",
-	"Ta": "Tantalum",
-	"W" : "Tungsten",
-	"Re": "Rhenium",
-	"Os": "Osmium",
-	"Ir": "Iridium",
-	"Pt": "Platinum",
-	"Au": "Gold",
-	"Hg": "Mercury",
-	"Tl": "Thallium",
-	"Pb": "Lead",
-	"Bi": "Bismuth",
-	"Po": "Polonium",
-	"At": "Astatine",
-	"Rn": "Radon",
-	"Fr": "Francium",
-	"Ra": "Radium",
-	"Ac": "Actinium",
-	"Th": "Thorium",
-	"Pa": "Protactinium",
-	"U" : "Uranium",
-	"Np": "Neptunium",
-	"Pu": "Plutonium",
-	"Am": "Americium",
-	"Cm": "Curium",
-	"Bk": "Berkelium",
-	"Cf": "Californium",
-	"Es": "Einsteinium",
-	"Fm": "Fermium",
-	"Md": "Mendelevium",
-	"No": "Nobelium",
-	"Lr": "Lawrencium",
-	"Rf": "Rutherfordium",
-	"Db": "Dubnium",
-	"Sg": "Seaborgium",
-	"Bh": "Bohrium",
-	"Hs": "Hassium",
-	"Mt": "Meitnerium",
-	"Ds": "Darmstadtium",
-	"Rg": "Roentgenium",
-	"Cn": "Copernicium",
-	"Nh": "Nihonium",
-	"Fl": "Flerovium",
-	"Mc": "Moscovium",
-	"Lv": "Livermorium",
-	"Ts": "Tennessine",
-	"Og": "Oganesson"
-}
 englishNamesRev = {v: k for k, v in englishNames.items()}
 
-# Output/Wikiviews.json is formatted like this:
-# {
-#   "Hydrogen": 123,
-#   "Helium": 99,
-#   "Lithium": 31,
-#   ...
-# }
 with open("Output/Wikiviews.json", "r") as f:
 	wViews = json.load(f)
+
+def getNeighbor(i, j, direction, xtra):
+	refTable = symbolsXtra if xtra else symbolsMn
+	symbol = refTable[i][j]
+	index = sanl.index(symbol)
+
+	if direction == "up":
+		if i > 0:
+			upperNeighborSymbol = refTable[i - 1][j]
+			if upperNeighborSymbol != "" and upperNeighborSymbol != "-":
+				return upperNeighborSymbol
+		return ""
+	
+	if direction == "down":
+		maxI = len(refTable)
+		if i < maxI - 1:
+			lowerNeighborSymbol = refTable[i + 1][j]
+			if lowerNeighborSymbol != "" and lowerNeighborSymbol != "-":
+				return lowerNeighborSymbol
+		return ""
+	
+	if direction == "left":
+		if index > 0:
+			return sanl[index - 1]
+		return ""
+	
+	if direction == "right":
+		if index < len(sanl) - 1:
+			return sanl[index + 1]
+		return ""
 
 # calculate score for each element, which is given by the number of views on wikipedia
 # + the average of neighboring elements (up and down + left and right (also if in the next period or at the lanthanides/actinides boundaries))
 scores = copy.deepcopy(wViews)
 
 for name in scores:
-	symbol = englishNamesRev[name]
+	symbol = englishNamesRev[name.lower()]
 	
 	# find index in symbolsMn or symbolsXtra
 	xtra = True
@@ -187,35 +68,16 @@ for name in scores:
 	numberOfNeighbors = 0
 	neighborSum = 0
 	
-	# upper neighbor
-	if (i > 0):
-		upperNeighborSymbol = (symbolsXtra if xtra else symbolsMn)[i-1][j]
-		if (upperNeighborSymbol != "" and upperNeighborSymbol != "-"):
+	directions = ["up", "down", "left", "right"]
+	for dir in directions:
+		neighborSymbol = getNeighbor(i, j, dir, xtra)
+		if neighborSymbol != "":
 			numberOfNeighbors += 1
-			neighborSum += wViews[englishNames[upperNeighborSymbol]]
-	
-	# lower neighbor
-	maxI = len(symbolsXtra) if xtra else len(symbolsMn)
-	if (i < maxI-1):
-		lowerNeighborSymbol = (symbolsXtra if xtra else symbolsMn)[i+1][j]
-		if (lowerNeighborSymbol != "" and lowerNeighborSymbol != "-"):
-			numberOfNeighbors += 1
-			neighborSum += wViews[englishNames[lowerNeighborSymbol]]
+			nameN = englishNames[neighborSymbol]
+			nameN = nameN[0].upper() + nameN[1:]
+			neighborSum += wViews[nameN]
 	
 	index = sanl.index(symbol)
-	
-	# left neighbor
-	if index > 0:
-		numberOfNeighbors += 1
-		leftNeighborSymbol = sanl[index-1]
-		neighborSum += wViews[englishNames[leftNeighborSymbol]]
-	
-	# right neighbor
-	if index < len(sanl) - 1:
-		numberOfNeighbors += 1
-		rightNeighborSymbol = sanl[index+1]
-		neighborSum += wViews[englishNames[rightNeighborSymbol]]
-	
 	avg = neighborSum / numberOfNeighbors
 	scores[name] = int((avg + wViews[name])/2) / ((index + 1) ** (1/2) + 5)
 
@@ -247,6 +109,13 @@ diff = maxV - minV
 
 for key in wViewsLog:
 	scores256[key] = int((scoresLog[key] - minV) / diff * 255)
+
+# create a list of symbols in descending order of their score
+sortedNames = [k for k, v in sorted(scores.items(), key=lambda item: item[1], reverse=True)]
+length = len(sortedNames)
+for i, name in enumerate(sortedNames):
+	scores256[name] = int((length - i) / length * 255)
+	scores[name] = i * 1000
 
 types = ["gLoc", "gName", "visWiki", "scores"]
 outputFiles = ["gLocTable", "gNameTable", "wikiViews", "scores"]
@@ -322,16 +191,16 @@ for type, outputFile in zip(types, outputFiles):
 			elif symbol == "NT": # meaning name tag
 				output += "\n\t\t<td id='nameTagTD'"
 				output += " class='disabled'" if type == "gName" else ""
-				output += " colspan='14'>{{Name}}</td>"
+				output += " colspan='14'>{{name}}</td>"
 			elif symbol == "bc": # meaning big cell
 				output += "\n\t\t<td id='bigCell' class='e' colspan='2'></td>"
 			else:
 				# add color if in vis mode
 				if isVis:
-					col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbol]]]}'"
-					addTxt = f"<br><span class='views'>{lookupD[englishNames[symbol]] // 1000}k</span>"
+					col = f" style='background-color: rgb{colorsMagma[lookup[englishNamesU[symbol]]]}'"
+					addTxt = f"<br><span class='views'>{lookupD[englishNamesU[symbol]] // 1000}k</span>"
 				if type == "visWiki":
-					addTxt = f"<br><span class='views'>{wViews[englishNames[symbol]] // 1000}k</span>"
+					addTxt = f"<br><span class='views'>{wViews[englishNamesU[symbol]] // 1000}k</span>"
 				if ((i == 5 or i == 6) and j == 2): # add indicator for actinides and lactinides
 					output += f"\n\t\t<td class='l hidden' {oct}{col}>{symbol}{addTxt}</td>"
 				elif ((i == 5 or i == 6) and j == 3):
@@ -346,10 +215,10 @@ for type, outputFile in zip(types, outputFiles):
 
 	# add lanthanides
 	if isVis:
-		col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbolsXtra[0][0]]]]}'"
-		addTxt = f"<br><span class='views'>{lookupD[englishNames[symbolsXtra[0][0]]] // 1000}k</span>"
+		col = f" style='background-color: rgb{colorsMagma[lookup[englishNamesU[symbolsXtra[0][0]]]]}'"
+		addTxt = f"<br><span class='views'>{lookupD[englishNamesU[symbolsXtra[0][0]]] // 1000}k</span>"
 	if type == "visWiki":
-		addTxt = f"<br><span class='views'>{wViews[englishNames[symbolsXtra[0][0]]] // 1000}k</span>"
+		addTxt = f"<br><span class='views'>{wViews[englishNamesU[symbolsXtra[0][0]]] // 1000}k</span>"
 	output += f"""
 	<tr>
 		<td class="e"></td>
@@ -361,20 +230,20 @@ for type, outputFile in zip(types, outputFiles):
 		
 		# add color if in vis mode
 		if isVis:
-			col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbol]]]}'"
-			addTxt = f"<br><span class='views'>{lookupD[englishNames[symbol]] // 1000}k</span>"
+			col = f" style='background-color: rgb{colorsMagma[lookup[englishNamesU[symbol]]]}'"
+			addTxt = f"<br><span class='views'>{lookupD[englishNamesU[symbol]] // 1000}k</span>"
 		if type == "visWiki":
-			addTxt = f"<br><span class='views'>{wViews[englishNames[symbol]] // 1000}k</span>"
+			addTxt = f"<br><span class='views'>{wViews[englishNamesU[symbol]] // 1000}k</span>"
 		output += f"\n\t\t<td class='hidden' {oct}{col}>{symbol}{addTxt}</td>"
 	output += "\n\t</tr>"
 
 
 	# add actinides
 	if isVis:
-		col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbolsXtra[1][0]]]]}'"
-		addTxt = f"<br><span class='views'>{lookupD[englishNames[symbolsXtra[1][0]]] // 1000}k</span>"
+		col = f" style='background-color: rgb{colorsMagma[lookup[englishNamesU[symbolsXtra[1][0]]]]}'"
+		addTxt = f"<br><span class='views'>{lookupD[englishNamesU[symbolsXtra[1][0]]] // 1000}k</span>"
 	if type == "visWiki":
-		addTxt = f"<br><span class='views'>{wViews[englishNames[symbolsXtra[1][0]]] // 1000}k</span>"
+		addTxt = f"<br><span class='views'>{wViews[englishNamesU[symbolsXtra[1][0]]] // 1000}k</span>"
 	output += f"""
 	<tr>
 		<td class="e"></td>
@@ -386,10 +255,10 @@ for type, outputFile in zip(types, outputFiles):
 		
 		# add color if in vis mode
 		if isVis:
-			col = f" style='background-color: rgb{colorsMagma[lookup[englishNames[symbol]]]}'"
-			addTxt = f"<br><span class='views'>{lookupD[englishNames[symbol]] // 1000}k</span>"
+			col = f" style='background-color: rgb{colorsMagma[lookup[englishNamesU[symbol]]]}'"
+			addTxt = f"<br><span class='views'>{lookupD[englishNamesU[symbol]] // 1000}k</span>"
 		if type == "visWiki":
-			addTxt = f"<br><span class='views'>{wViews[englishNames[symbol]] // 1000}k</span>"
+			addTxt = f"<br><span class='views'>{wViews[englishNamesU[symbol]] // 1000}k</span>"
 		output += f"\n\t\t<td class='hidden' {oct}{col}>{symbol}{addTxt}</td>"
 	output += "\n\t</tr>"
 
@@ -403,6 +272,58 @@ for type, outputFile in zip(types, outputFiles):
 
 	# write to file TableFull.html
 	with open(f"Output/{outputFile}.html", "w") as f:
+		f.write(output)
+
+directions = ["up", "down", "left", "right"]
+
+# Generate cards
+languages = ["en", "fr", "de", "it", "pt", "es"]
+# import languages.json
+with open("Output/languages.json", "r") as f:
+	translations = json.load(f)
+
+# Clean or create folder "Cards"
+if os.path.exists("Output/Cards"):
+	for file in os.listdir("Output/Cards"):
+		os.remove(f"Output/Cards/{file}")
+else:
+	os.makedirs("Output/Cards")
+
+for lang in languages:
+	output = ""
+	
+	for name in sortedNames:
+		symbol = englishNamesRev[name.lower()]
+		
+		xtra = symbol in symbolsXtra[0] or symbol in symbolsXtra[1]
+		ref_table = symbolsXtra if xtra else symbolsMn
+		
+		i, j = 0, 0
+		for i in range(len(ref_table)):
+			if symbol in ref_table[i]:
+				j = ref_table[i].index(symbol)
+				break
+		
+		# engName = englishNames[symbol]
+		name = translations[symbol][lang]
+		neighbors = [getNeighbor(i, j, dir, xtra) for dir in directions]
+		
+		if not xtra:
+			period = i + 1
+		elif j == 0:
+			period = "La"
+		else:
+			period = "Ac"
+		
+		group = j + 1
+		
+		output += f"""{period};{group};{name};{neighbors[0]};{neighbors[1]};{neighbors[2]};{neighbors[3]}\n"""
+	
+	# delete last \n
+	output = output[:-1]
+	
+	# write to file
+	with open(f"Output/Cards/{lang}.csv", "w") as f:
 		f.write(output)
 
 print("Done!")

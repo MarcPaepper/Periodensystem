@@ -1,346 +1,316 @@
 <link rel="stylesheet" href="Style.css">
 
-<table id="Periodensystem">
-	<tr class="hauptgr">
-		<td class="e"></td>
-		<td>I</td>
-		<td>II</td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td>III</td>
-		<td>IV</td>
-		<td>V</td>
-		<td>VI</td>
-		<td>VII</td>
-		<td>VIII</td>
-	</tr>
+<div>
+	<div id="nameTag" class="disabled">
+		{{name}}
+	</div>
 	
-	<tr class="nebengr">
-		<td class="e"></td>
-		<td>1</td>
-		<td>2</td>
-		<td>3</td>
-		<td>4</td>
-		<td>5</td>
-		<td>6</td>
-		<td>7</td>
-		<td>8</td>
-		<td>9</td>
-		<td>10</td>
-		<td>11</td>
-		<td>12</td>
-		<td>13</td>
-		<td>14</td>
-		<td>15</td>
-		<td>16</td>
-		<td>17</td>
-		<td>18</td>
-	</tr>
-	<tr>
-		<td class="p">1</td>
-		<td class='hidden'  onClick='wrongPick(event)'>H</td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class='hidden'  onClick='wrongPick(event)'>He</td>
-	</tr>
-	<tr>
-		<td class="p">2</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Li</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Be</td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class='hidden'  onClick='wrongPick(event)'>B</td>
-		<td class='hidden'  onClick='wrongPick(event)'>C</td>
-		<td class='hidden'  onClick='wrongPick(event)'>N</td>
-		<td class='hidden'  onClick='wrongPick(event)'>O</td>
-		<td class='hidden'  onClick='wrongPick(event)'>F</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Ne</td>
-	</tr>
-	<tr>
-		<td class="p">3</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Na</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Mg</td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class='hidden'  onClick='wrongPick(event)'>Al</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Si</td>
-		<td class='hidden'  onClick='wrongPick(event)'>P</td>
-		<td class='hidden'  onClick='wrongPick(event)'>S</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Cl</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Ar</td>
-	</tr>
-	<tr>
-		<td class="p">4</td>
-		<td class='hidden'  onClick='wrongPick(event)'>K</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Ca</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Sc</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Ti</td>
-		<td class='hidden'  onClick='wrongPick(event)'>V</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Cr</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Mn</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Fe</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Co</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Ni</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Cu</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Zn</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Ga</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Ge</td>
-		<td class='hidden'  onClick='wrongPick(event)'>As</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Se</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Br</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Kr</td>
-	</tr>
-	<tr>
-		<td class="p">5</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Rb</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Sr</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Y</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Zr</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Nb</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Mo</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Tc</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Ru</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Rh</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Pd</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Ag</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Cd</td>
-		<td class='hidden'  onClick='wrongPick(event)'>In</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Sn</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Sb</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Te</td>
-		<td class='hidden'  onClick='wrongPick(event)'>I</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Xe</td>
-	</tr>
-	<tr>
-		<td class="p">6</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Cs</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Ba</td>
-		<td class='l hidden' onClick='wrongPick(event)'>La</td>
-		<td class='r hidden' onClick='wrongPick(event)'>Hf</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Ta</td>
-		<td class='hidden'  onClick='wrongPick(event)'>W</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Re</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Os</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Ir</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Pt</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Au</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Hg</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Tl</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Pb</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Bi</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Po</td>
-		<td class='hidden'  onClick='wrongPick(event)'>At</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Rn</td>
-	</tr>
-	<tr>
-		<td class="p">7</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Fr</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Ra</td>
-		<td class='l hidden' onClick='wrongPick(event)'>Ac</td>
-		<td class='r hidden' onClick='wrongPick(event)'>Rf</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Db</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Sg</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Bh</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Hs</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Mt</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Ds</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Rg</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Cn</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Nh</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Fl</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Mc</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Lv</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Ts</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Og</td>
-	</tr>
-	<tr>
-		<td class="e"></td>
-	</tr>
-	<tr>
-		<td class="e"></td>
-		<td class="p x" colspan=3>Lanthan.:</td>
-		<td class='r hidden' onClick='wrongPick(event)'>Ce</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Pr</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Nd</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Pm</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Sm</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Eu</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Gd</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Tb</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Dy</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Ho</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Er</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Tm</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Yb</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Lu</td>
-	</tr>
-	<tr>
-		<td class="e"></td>
-		<td class="p x" colspan=3>Actin.:</td>
-		<td class='r hidden' onClick='wrongPick(event)'>Th</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Pa</td>
-		<td class='hidden'  onClick='wrongPick(event)'>U</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Np</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Pu</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Am</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Cm</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Bk</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Cf</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Es</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Fm</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Md</td>
-		<td class='hidden'  onClick='wrongPick(event)'>No</td>
-		<td class='hidden'  onClick='wrongPick(event)'>Lr</td>
-	</tr>
-</table>
-
-
-
-<br/>
-<span id="nameTag">
-	{{Name}}
-</span>
-
-<script>
-	function markCell() {
-		var periode = parseInt("{{Periode}}");
-		var gruppe = parseInt("{{Gruppe}}");
-		var name = "{{Name}}";
-
-		if (!periode) {
-			if ("{{Periode}}" === "La") {
-				periode = 9;
-				gruppe = gruppe + 2;
-			} else if ("{{Periode}}" === "Ac") {
-				periode = 10;
-				gruppe = gruppe + 2;
-			} else {
-				periode = 4;
+	
+	
+	<table id="Periodensystem" class="gName">
+		<tr class="hauptgr">
+			<td class="e"></td>
+			<td>I</td>
+			<td>II</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>III</td>
+			<td>IV</td>
+			<td>V</td>
+			<td>VI</td>
+			<td>VII</td>
+			<td>VIII</td>
+		</tr>
+		
+		<tr class="nebengr">
+			<td class="e"></td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+			<td>10</td>
+			<td>11</td>
+			<td>12</td>
+			<td>13</td>
+			<td>14</td>
+			<td>15</td>
+			<td>16</td>
+			<td>17</td>
+			<td>18</td>
+		</tr>
+		<tr class='main'>
+			<td class="p">1</td>
+			<td class='hidden' onClick='flipToBack()'>H</td>
+			<td class="e"></td>
+			<td id='nameTagTD' class='disabled' colspan='14'>{{name}}</td>
+			<td style='display: none'></td>
+			<td style='display: none'></td>
+			<td style='display: none'></td>
+			<td style='display: none'></td>
+			<td style='display: none'></td>
+			<td style='display: none'></td>
+			<td style='display: none'></td>
+			<td style='display: none'></td>
+			<td style='display: none'></td>
+			<td style='display: none'></td>
+			<td style='display: none'></td>
+			<td style='display: none'></td>
+			<td style='display: none'></td>
+			<td class="e"></td>
+			<td class='hidden' onClick='flipToBack()'>He</td>
+		</tr>
+		<tr class='main'>
+			<td class="p">2</td>
+			<td class='hidden' onClick='flipToBack()'>Li</td>
+			<td class='hidden' onClick='flipToBack()'>Be</td>
+			<td class="e"></td>
+			<td class="e"></td>
+			<td class="e"></td>
+			<td class="e"></td>
+			<td class="e"></td>
+			<td class="e"></td>
+			<td id='bigCell' class='e' colspan='2'></td>
+			<td style='display: none'></td>
+			<td class="e"></td>
+			<td class="e"></td>
+			<td class='hidden' onClick='flipToBack()'>B</td>
+			<td class='hidden' onClick='flipToBack()'>C</td>
+			<td class='hidden' onClick='flipToBack()'>N</td>
+			<td class='hidden' onClick='flipToBack()'>O</td>
+			<td class='hidden' onClick='flipToBack()'>F</td>
+			<td class='hidden' onClick='flipToBack()'>Ne</td>
+		</tr>
+		<tr class='main'>
+			<td class="p">3</td>
+			<td class='hidden' onClick='flipToBack()'>Na</td>
+			<td class='hidden' onClick='flipToBack()'>Mg</td>
+			<td class="e"></td>
+			<td class="e"></td>
+			<td class="e"></td>
+			<td class="e"></td>
+			<td class="e"></td>
+			<td class="e"></td>
+			<td class="e"></td>
+			<td class="e"></td>
+			<td class="e"></td>
+			<td class="e"></td>
+			<td class='hidden' onClick='flipToBack()'>Al</td>
+			<td class='hidden' onClick='flipToBack()'>Si</td>
+			<td class='hidden' onClick='flipToBack()'>P</td>
+			<td class='hidden' onClick='flipToBack()'>S</td>
+			<td class='hidden' onClick='flipToBack()'>Cl</td>
+			<td class='hidden' onClick='flipToBack()'>Ar</td>
+		</tr>
+		<tr class='main'>
+			<td class="p">4</td>
+			<td class='hidden' onClick='flipToBack()'>K</td>
+			<td class='hidden' onClick='flipToBack()'>Ca</td>
+			<td class='hidden' onClick='flipToBack()'>Sc</td>
+			<td class='hidden' onClick='flipToBack()'>Ti</td>
+			<td class='hidden' onClick='flipToBack()'>V</td>
+			<td class='hidden' onClick='flipToBack()'>Cr</td>
+			<td class='hidden' onClick='flipToBack()'>Mn</td>
+			<td class='hidden' onClick='flipToBack()'>Fe</td>
+			<td class='hidden' onClick='flipToBack()'>Co</td>
+			<td class='hidden' onClick='flipToBack()'>Ni</td>
+			<td class='hidden' onClick='flipToBack()'>Cu</td>
+			<td class='hidden' onClick='flipToBack()'>Zn</td>
+			<td class='hidden' onClick='flipToBack()'>Ga</td>
+			<td class='hidden' onClick='flipToBack()'>Ge</td>
+			<td class='hidden' onClick='flipToBack()'>As</td>
+			<td class='hidden' onClick='flipToBack()'>Se</td>
+			<td class='hidden' onClick='flipToBack()'>Br</td>
+			<td class='hidden' onClick='flipToBack()'>Kr</td>
+		</tr>
+		<tr class='main'>
+			<td class="p">5</td>
+			<td class='hidden' onClick='flipToBack()'>Rb</td>
+			<td class='hidden' onClick='flipToBack()'>Sr</td>
+			<td class='hidden' onClick='flipToBack()'>Y</td>
+			<td class='hidden' onClick='flipToBack()'>Zr</td>
+			<td class='hidden' onClick='flipToBack()'>Nb</td>
+			<td class='hidden' onClick='flipToBack()'>Mo</td>
+			<td class='hidden' onClick='flipToBack()'>Tc</td>
+			<td class='hidden' onClick='flipToBack()'>Ru</td>
+			<td class='hidden' onClick='flipToBack()'>Rh</td>
+			<td class='hidden' onClick='flipToBack()'>Pd</td>
+			<td class='hidden' onClick='flipToBack()'>Ag</td>
+			<td class='hidden' onClick='flipToBack()'>Cd</td>
+			<td class='hidden' onClick='flipToBack()'>In</td>
+			<td class='hidden' onClick='flipToBack()'>Sn</td>
+			<td class='hidden' onClick='flipToBack()'>Sb</td>
+			<td class='hidden' onClick='flipToBack()'>Te</td>
+			<td class='hidden' onClick='flipToBack()'>I</td>
+			<td class='hidden' onClick='flipToBack()'>Xe</td>
+		</tr>
+		<tr class='main'>
+			<td class="p">6</td>
+			<td class='hidden' onClick='flipToBack()'>Cs</td>
+			<td class='hidden' onClick='flipToBack()'>Ba</td>
+			<td class='l hidden' onClick='flipToBack()'>La</td>
+			<td class='r hidden' onClick='flipToBack()'>Hf</td>
+			<td class='hidden' onClick='flipToBack()'>Ta</td>
+			<td class='hidden' onClick='flipToBack()'>W</td>
+			<td class='hidden' onClick='flipToBack()'>Re</td>
+			<td class='hidden' onClick='flipToBack()'>Os</td>
+			<td class='hidden' onClick='flipToBack()'>Ir</td>
+			<td class='hidden' onClick='flipToBack()'>Pt</td>
+			<td class='hidden' onClick='flipToBack()'>Au</td>
+			<td class='hidden' onClick='flipToBack()'>Hg</td>
+			<td class='hidden' onClick='flipToBack()'>Tl</td>
+			<td class='hidden' onClick='flipToBack()'>Pb</td>
+			<td class='hidden' onClick='flipToBack()'>Bi</td>
+			<td class='hidden' onClick='flipToBack()'>Po</td>
+			<td class='hidden' onClick='flipToBack()'>At</td>
+			<td class='hidden' onClick='flipToBack()'>Rn</td>
+		</tr>
+		<tr class='main'>
+			<td class="p">7</td>
+			<td class='hidden' onClick='flipToBack()'>Fr</td>
+			<td class='hidden' onClick='flipToBack()'>Ra</td>
+			<td class='l hidden' onClick='flipToBack()'>Ac</td>
+			<td class='r hidden' onClick='flipToBack()'>Rf</td>
+			<td class='hidden' onClick='flipToBack()'>Db</td>
+			<td class='hidden' onClick='flipToBack()'>Sg</td>
+			<td class='hidden' onClick='flipToBack()'>Bh</td>
+			<td class='hidden' onClick='flipToBack()'>Hs</td>
+			<td class='hidden' onClick='flipToBack()'>Mt</td>
+			<td class='hidden' onClick='flipToBack()'>Ds</td>
+			<td class='hidden' onClick='flipToBack()'>Rg</td>
+			<td class='hidden' onClick='flipToBack()'>Cn</td>
+			<td class='hidden' onClick='flipToBack()'>Nh</td>
+			<td class='hidden' onClick='flipToBack()'>Fl</td>
+			<td class='hidden' onClick='flipToBack()'>Mc</td>
+			<td class='hidden' onClick='flipToBack()'>Lv</td>
+			<td class='hidden' onClick='flipToBack()'>Ts</td>
+			<td class='hidden' onClick='flipToBack()'>Og</td>
+		</tr>
+		<tr id='emptyRow'>
+			<td class="e"></td><td class="e"></td>
+		</tr>
+		<tr>
+			<td class="e"></td>
+			<td class="p x" colspan=3>Lanthan.:</td>
+			<td class='r hidden'onClick='flipToBack()'>Ce</td>
+			<td class='hidden' onClick='flipToBack()'>Pr</td>
+			<td class='hidden' onClick='flipToBack()'>Nd</td>
+			<td class='hidden' onClick='flipToBack()'>Pm</td>
+			<td class='hidden' onClick='flipToBack()'>Sm</td>
+			<td class='hidden' onClick='flipToBack()'>Eu</td>
+			<td class='hidden' onClick='flipToBack()'>Gd</td>
+			<td class='hidden' onClick='flipToBack()'>Tb</td>
+			<td class='hidden' onClick='flipToBack()'>Dy</td>
+			<td class='hidden' onClick='flipToBack()'>Ho</td>
+			<td class='hidden' onClick='flipToBack()'>Er</td>
+			<td class='hidden' onClick='flipToBack()'>Tm</td>
+			<td class='hidden' onClick='flipToBack()'>Yb</td>
+			<td class='hidden' onClick='flipToBack()'>Lu</td>
+		</tr>
+		<tr>
+			<td class="e"></td>
+			<td class="p x" colspan=3>Actin.:</td>
+			<td class='r hidden'onClick='flipToBack()'>Th</td>
+			<td class='hidden' onClick='flipToBack()'>Pa</td>
+			<td class='hidden' onClick='flipToBack()'>U</td>
+			<td class='hidden' onClick='flipToBack()'>Np</td>
+			<td class='hidden' onClick='flipToBack()'>Pu</td>
+			<td class='hidden' onClick='flipToBack()'>Am</td>
+			<td class='hidden' onClick='flipToBack()'>Cm</td>
+			<td class='hidden' onClick='flipToBack()'>Bk</td>
+			<td class='hidden' onClick='flipToBack()'>Cf</td>
+			<td class='hidden' onClick='flipToBack()'>Es</td>
+			<td class='hidden' onClick='flipToBack()'>Fm</td>
+			<td class='hidden' onClick='flipToBack()'>Md</td>
+			<td class='hidden' onClick='flipToBack()'>No</td>
+			<td class='hidden' onClick='flipToBack()'>Lr</td>
+		</tr>
+	</table>
+	</div>
+	
+	
+	<div id="111"> </div>
+	<script>
+		function markCell() {
+			var periode = parseInt("{{period}}");
+			var gruppe = parseInt("{{group}}");
+			var name = parseInt("{{name}}");
+	
+			if (!periode) {
+				if ("{{period}}" === "La") {
+					periode = 9;
+					gruppe = gruppe + 1;
+				} else if ("{{period}}" === "Ac") {
+					periode = 10;
+					gruppe = gruppe + 1;
+				} else {
+					periode = 9;
+				}
 			}
+			if (!gruppe) {
+					gruppe = 2;
+			}
+			
+			let table = document.getElementById("Periodensystem");
+			let cell = table.children[0].children[periode + 1].children[gruppe];
+			cell.classList.add("a");
+			cell.classList.add("revealed");
+			cell.classList.add("noText");
+			cell.classList.remove("hidden");
 		}
-		if (!gruppe) {
-			gruppe = 1;
+		markCell();
+	
+	function flipToBack() {
+		if (typeof pycmd !== "undefined") {
+			pycmd("ans")
+		} else if (typeof study !== "undefined") {
+			study.drawAnswer()
+		} else if (typeof AnkiDroidJS !== "undefined") {
+			showAnswer()
+		} else if (window.anki && window.sendMessage2) {
+			window.sendMessage("ankitap", "midCenter")
+		}
+	}
+	
+	function scrollCenter() {
+		let back = document.getElementById("back");
+		if (back != null) {
+			return;
 		}
 		
-		let table = document.getElementById("Periodensystem");
-		let cell = table.children[0].children[periode + 1].children[gruppe];
-		cell.onclick = function() {rightPick()};
-		cell.classList.add("a");
-	}
-	markCell();
-
-function rightPick() {
-	event.target.classList.add("a");
-	Array.from(document.querySelectorAll('.hidden')).forEach(
-  	(el) => el.classList.remove('hidden')
-	);
-}
-
-function wrongPick(event) {
-	event.target.classList.add("wrongPick");
-	event.target.classList.remove("hidden");
-
-	// get all indices of wrong picks
-	let wrongPicks = document.getElementsByClassName("wrongPick");
-	let positions = new Array(wrongPicks.length)
-	
-	for (let i = 0; i < wrongPicks.length; i++) {
-		let wP = wrongPicks[i];
+		const height = window.innerHeight;
+		let id = height > 380 ? "nameTag" : "nameTagTD";
+		let nt = document.getElementById(id);
+		let offset = height > 380 ? -20 : -30;
 		
-		let row = wP.parentNode.rowIndex;
-		let col = wP.cellIndex;
-		let pos = [row, col];
+		let bigCell = document.getElementById("bigCell");
+		bigCell.scrollIntoView({
+				behavior: 'auto',
+				inline: 'center'
+			});
 		
-		positions[i] = [pos];
+		window.scrollTo({
+		behavior: 'smooth',
+		top:
+		  nt.getBoundingClientRect().top -
+		  document.body.getBoundingClientRect().top -
+		  offset,
+	  });
 	}
-	sessionStorage.setItem("studiedElement", "{{Name}}");
-	sessionStorage.setItem("wrongPicks", positions);
-}
-
-function flipToBack() {
-	test();
-	if (typeof pycmd !== "undefined") {
-		pycmd("ans")
-	} else if (typeof study !== "undefined") {
-		study.drawAnswer()
-	} else if (typeof AnkiDroidJS !== "undefined") {
-		showAnswer()
-	} else if (window.anki && window.sendMessage2) {
-		window.sendMessage("ankitap", "midCenter")
-	}
-}
-
-// register listeners
-function registerListeners() {
-	let table = document.getElementById("Periodensystem");
-	let rows = table.children[0].children;
-	
-	for (let y = 2; y < 12; y++) {
-		if (y == 9) {
-			continue; // Skip empty row above lanthanoids
-		}
-		let elements = rows[y].children;
-		for (let x = 1; x <= 18; x++) {
-			let el = elements[x];
-			if (el !== undefined && !el.classList.contains("e")) {
-				el.addEventListener("click", wrongPick); 
-			}
-		}
-	}
-}
-
-	function test() {
-		try {
-			document.getElementsByClassName("card")[0].style = ("background: " + getRandomColor());
-		} catch (e) { alert("error test " + e.message); console.trace(); title.innerHTML=("error: "+e.message) }
-	}
-	
-	function getRandomColor() {
-		try {
-			var letters = '789ABCDEF';
-			var color = '#';
-			for (var i = 0; i < 6; i++) {
-				color += letters[Math.floor(Math.random() * letters.length)];
-			}
-			return color;
-		} catch (e) { alert("error rando color " + e.message); console.trace(); title.innerHTML=("error: "+e.message) }
-	}
-</script>
+	scrollCenter();
+	setTimeout(function(){
+		scrollCenter();
+	}, 90);
+	</script>

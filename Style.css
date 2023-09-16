@@ -1,3 +1,11 @@
+.noText {
+	font-size: 0px;
+}
+
+#bigCell {
+	background: green;
+}
+
 .win #_mark {
 	top: 23px;
 }
@@ -7,10 +15,8 @@
 	text-align: center;
 	color: black;
 	background-color: white;
-	display: flex;
-	justify-content: center;
 }
-.win .card {
+.card {
 	margin-top: 31px;
 }
 .mobile .card {
@@ -20,9 +26,43 @@
   background-color: #222;
 }
 
+#nameTag {
+	font-size: 26px;
+	background: pink;
+	width: 100%;
+}
+
+#nameTagTD {
+	opacity: 0;
+	border: none;
+	vertical-align: top;
+	padding-top: 4px;
+	height: 30px;
+	background: none;
+}
+
+#nameTag.disabled, #nameTagTD.disabled {
+	font-size: 0px;
+}
+#nameTag.disabled::after, #nameTagTD.disabled::after {
+  content: "???";
+	font-size: 26px;
+}
+
 table {
 	table-layout: fixed;
 	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.hidden {
+	color: #0000;
+  user-select: none;
+}
+
+.hidden, .a {
+	cursor: pointer;
 }
 
 td {
@@ -30,23 +70,27 @@ td {
 	width: 46px;
 	min-width: 35px;
 	text-align: center;
-	color: #0000;
-  user-select: none;
 }
 
 td:not(.e) {
 	border: 2px solid black;
 	margin: -1px;
-	cursor: pointer;
 }
 
 .nightMode td {
-	border-color: white;
+	border-color: #aaa;
+}
+
+.main > td:nth-child(even):not(.e):not(.wrongPick):not(.revealed) {
+	background: #88888830;
+}
+
+.nightMode .main > td:nth-child(even):not(.e):not(.wrongPick):not(.revealed) {
+	background: #7526;
 }
 
 .hauptgr > td {
 	border: none;
-	cursor: default;
 	color: #00f;
 }
 
@@ -56,7 +100,6 @@ td:not(.e) {
 
 .nebengr > td {
 	border: none;
-	cursor: default;
 	color: rgb(0, 116, 184);
 	vertical-align: top;
 	padding-top: 1px;
@@ -68,15 +111,28 @@ td:not(.e) {
 
 .p:not(.e), .p {
 	border: none;
-	cursor: default;
-	color: #4a0;
+	color: #970;
 }
 
-.nightMode.p:not(.e), .nightMode.p {
-	color: #6c0;
+.nightMode .p:not(.e), .nightMode .p {
+	color: #db8;
 }
 
-.a {
+.a.revealed {
+	background: #0dfc;
+}
+
+.nightMode .a.revealed {
+	background: #09fb;
+	outline-offset: -2px;
+	outline: 4px solid #9f9;
+}
+
+.rightPick {
+	background: #0f0a;
+}
+
+.wrongPick {
 	background: #f00a;
 }
 
@@ -92,6 +148,39 @@ td:not(.e) {
 	border-right: 5px solid #1af;
 }
 
-#nameTag {
-	font-size: 26px;
+
+
+@media only screen and (min-height: 720px) {
+	#Periodensystem {
+		margin-top: 30px;
+	}
+}
+
+
+/*
+@media only screen and (max-width: 850px) {
+	#Periodensystem > tbody > tr > td:first-child {
+		display: none;
+	}
+}
+
+@media only screen and (max-height: 437px) {
+	#Periodensystem > tbody > tr:first-child {
+		display: none;
+	}
+}*/
+
+@media only screen and (max-height: 490px) {
+	#Periodensystem > tbody > tr:nth-child(2) {
+		display: none;
+	}
+}
+
+@media only screen and (max-height: 380px) {
+	#nameTag {
+		display: none;
+	}
+	#nameTagTD {
+		opacity: 1
+	}
 }

@@ -180,6 +180,16 @@ for type, outputFile in zip(types, outputFiles):
 	col = ""
 	addTxt = ""
 	
+	def createCell(symbol, i, j, isXtra, classes, id, attr):
+		# add color if in vis mode
+		if isVis:
+			col = f" style='background-color: rgb{colorsMagma[lookup[englishNamesU[symbol]]]}'"
+			addTxt = f"<br><span class='views'>{lookupD[englishNamesU[symbol]] // 1000}k</span>"
+		if type == "visWiki":
+			addTxt = f"<br><span class='views'>{wViews[englishNamesU[symbol]] // 1000}k</span>"
+		
+		return f"\n\t\t<td class='{classes}' id='{id}' {attr}{col}>{symbol}{addTxt}</td>"
+	
 	# add main group
 	for i, td in enumerate(symbolsMn):
 		output += "\n\t<tr class='main'>\n\t\t<td class=\"p\">" + str(i+1) + "</td>"

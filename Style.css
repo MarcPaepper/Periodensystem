@@ -2,25 +2,30 @@
 	font-size: 0px;
 }
 
-#bigCell {
-	background: green;
-}
-
 .win #_mark {
 	top: 23px;
 }
+
+#qa {
+	display: inline-block;
+	padding: 23px 30px 10px 7px;
+}
+.mobile #qa {
+	padding: 18px 15px 15px 0px;
+}
+.content {
+	margin: 0;
+	padding: 0;
+}
+
 .card {
 	font-family: arial;
 	font-size: 20px;
 	text-align: center;
 	color: black;
 	background-color: white;
-}
-.card {
-	margin-top: 31px;
-}
-.mobile .card {
- padding-top: 10px;
+	margin: 0;
+	padding: 0;
 }
 .nightMode.card {
   background-color: #222;
@@ -28,7 +33,6 @@
 
 #nameTag {
 	font-size: 26px;
-	background: pink;
 	width: 100%;
 }
 
@@ -42,7 +46,7 @@
 }
 
 #nameTag.disabled, #nameTagTD.disabled {
-	font-size: 0px;
+	font-size: 20px;
 }
 #nameTag.disabled::after, #nameTagTD.disabled::after {
   content: "???";
@@ -86,7 +90,7 @@ td:not(.e) {
 }
 
 .nightMode .main > td:nth-child(even):not(.e):not(.wrongPick):not(.revealed) {
-	background: #7526;
+	background: #bb66ff22;
 }
 
 .hauptgr > td {
@@ -106,7 +110,7 @@ td:not(.e) {
 }
 
 .nightMode .nebengr > td {
-	color: #00BBFF;
+	color: #00BBFFEC;
 }
 
 .p:not(.e), .p {
@@ -124,8 +128,9 @@ td:not(.e) {
 
 .nightMode .a.revealed {
 	background: #09fb;
-	outline-offset: -2px;
-	outline: 4px solid #9f9;
+	background: #0f09;
+	outline-offset: -1px;
+	outline: 2px solid #9f9;
 }
 
 .rightPick {
@@ -141,11 +146,18 @@ td:not(.e) {
 }
 
 .l:not(.e), .x:not(.e) {
-	border-right: 5px solid #008;
+	border-right: 5px solid #1af;
 }
 
-.l:not(.e), .x:not(.e) {
-	border-right: 5px solid #1af;
+.nightMode .l:not(.e), .nightMode .x:not(.e) {
+	border-right: 5px solid #1ad;
+}
+
+#scrollDiv {
+	position: absolute;
+	top: 100px;
+	margin: 0px;
+	height: 10px;
 }
 
 
@@ -158,12 +170,6 @@ td:not(.e) {
 
 
 /*
-@media only screen and (max-width: 850px) {
-	#Periodensystem > tbody > tr > td:first-child {
-		display: none;
-	}
-}
-
 @media only screen and (max-height: 437px) {
 	#Periodensystem > tbody > tr:first-child {
 		display: none;
@@ -171,8 +177,8 @@ td:not(.e) {
 }*/
 
 @media only screen and (max-height: 490px) {
-	#Periodensystem > tbody > tr:nth-child(2) {
-		display: none;
+	.nebengr > td {
+		height: 35px;
 	}
 }
 
@@ -182,5 +188,11 @@ td:not(.e) {
 	}
 	#nameTagTD {
 		opacity: 1
+	}
+}
+@media only screen and (max-width: 740px) {
+	.card {
+		background: pink;
+		
 	}
 }

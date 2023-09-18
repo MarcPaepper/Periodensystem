@@ -1,12 +1,19 @@
-<!-- mobile viewport -->
-<head>
-	<meta name="viewport" content="width=1000, initial-scale=2.0, maximum-scale=2.0, minimum-scale=1.0" />
-</head>
-
 <link rel="stylesheet" href="Style.css">
 
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=0.5" />
+</head>
 <div id="nameTag" class="disabled">
-	Helium
+	{{name}}
+</div>
+
+
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=0.5" />
+</head>
+<div id="nameTag" class="disabled">
+	{{name}}
 </div>
 
 
@@ -57,9 +64,9 @@
 	</tr>
 	<tr class='main'>
 		<td class="p">1</td>
-		<td class='hidden' onClick='flipToBack()'>H</td>
-		<td class="e"></td>
-		<td id='nameTagTD' class='disabled' colspan='14'>Helium</td>
+		<td class='hidden' onClick='elClick(event)' title='1 Wasserstoff'>H</td>
+		<td class='e' ></td>
+		<td class='disabled' id='nameTagTD' colspan='14'>{{name}}</td>
 		<td style='display: none'></td>
 		<td style='display: none'></td>
 		<td style='display: none'></td>
@@ -73,134 +80,134 @@
 		<td style='display: none'></td>
 		<td style='display: none'></td>
 		<td style='display: none'></td>
-		<td class="e"></td>
-		<td class='hidden' onClick='flipToBack()'>He</td>
+		<td class='e' ></td>
+		<td class='hidden' onClick='elClick(event)' title='2 Helium'>He</td>
 	</tr>
 	<tr class='main'>
 		<td class="p">2</td>
-		<td class='hidden' onClick='flipToBack()'>Li</td>
-		<td class='hidden' onClick='flipToBack()'>Be</td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td id='bigCell' class='e' colspan='2'></td>
+		<td class='hidden' onClick='elClick(event)' title='3 Lithium'>Li</td>
+		<td class='hidden' onClick='elClick(event)' title='4 Beryllium'>Be</td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' colspan='2' id='bigCell'></td>
 		<td style='display: none'></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class='hidden' onClick='flipToBack()'>B</td>
-		<td class='hidden' onClick='flipToBack()'>C</td>
-		<td class='hidden' onClick='flipToBack()'>N</td>
-		<td class='hidden' onClick='flipToBack()'>O</td>
-		<td class='hidden' onClick='flipToBack()'>F</td>
-		<td class='hidden' onClick='flipToBack()'>Ne</td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='hidden' onClick='elClick(event)' title='5 Bor'>B</td>
+		<td class='hidden' onClick='elClick(event)' title='6 Kohlenstoff'>C</td>
+		<td class='hidden' onClick='elClick(event)' title='7 Stickstoff'>N</td>
+		<td class='hidden' onClick='elClick(event)' title='8 Sauerstoff'>O</td>
+		<td class='hidden' onClick='elClick(event)' title='9 Fluor'>F</td>
+		<td class='hidden' onClick='elClick(event)' title='10 Neon'>Ne</td>
 	</tr>
 	<tr class='main'>
 		<td class="p">3</td>
-		<td class='hidden' onClick='flipToBack()'>Na</td>
-		<td class='hidden' onClick='flipToBack()'>Mg</td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class="e"></td>
-		<td class='hidden' onClick='flipToBack()'>Al</td>
-		<td class='hidden' onClick='flipToBack()'>Si</td>
-		<td class='hidden' onClick='flipToBack()'>P</td>
-		<td class='hidden' onClick='flipToBack()'>S</td>
-		<td class='hidden' onClick='flipToBack()'>Cl</td>
-		<td class='hidden' onClick='flipToBack()'>Ar</td>
+		<td class='hidden' onClick='elClick(event)' title='11 Natrium'>Na</td>
+		<td class='hidden' onClick='elClick(event)' title='12 Magnesium'>Mg</td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='hidden' onClick='elClick(event)' title='13 Aluminium'>Al</td>
+		<td class='hidden' onClick='elClick(event)' title='14 Silicium'>Si</td>
+		<td class='hidden' onClick='elClick(event)' title='15 Phosphor'>P</td>
+		<td class='hidden' onClick='elClick(event)' title='16 Schwefel'>S</td>
+		<td class='hidden' onClick='elClick(event)' title='17 Chlor'>Cl</td>
+		<td class='hidden' onClick='elClick(event)' title='18 Argon'>Ar</td>
 	</tr>
 	<tr class='main'>
 		<td class="p">4</td>
-		<td class='hidden' onClick='flipToBack()'>K</td>
-		<td class='hidden' onClick='flipToBack()'>Ca</td>
-		<td class='hidden' onClick='flipToBack()'>Sc</td>
-		<td class='hidden' onClick='flipToBack()'>Ti</td>
-		<td class='hidden' onClick='flipToBack()'>V</td>
-		<td class='hidden' onClick='flipToBack()'>Cr</td>
-		<td class='hidden' onClick='flipToBack()'>Mn</td>
-		<td class='hidden' onClick='flipToBack()'>Fe</td>
-		<td class='hidden' onClick='flipToBack()'>Co</td>
-		<td class='hidden' onClick='flipToBack()'>Ni</td>
-		<td class='hidden' onClick='flipToBack()'>Cu</td>
-		<td class='hidden' onClick='flipToBack()'>Zn</td>
-		<td class='hidden' onClick='flipToBack()'>Ga</td>
-		<td class='hidden' onClick='flipToBack()'>Ge</td>
-		<td class='hidden' onClick='flipToBack()'>As</td>
-		<td class='hidden' onClick='flipToBack()'>Se</td>
-		<td class='hidden' onClick='flipToBack()'>Br</td>
-		<td class='hidden' onClick='flipToBack()'>Kr</td>
+		<td class='hidden' onClick='elClick(event)' title='19 Kalium'>K</td>
+		<td class='hidden' onClick='elClick(event)' title='20 Calcium'>Ca</td>
+		<td class='hidden' onClick='elClick(event)' title='21 Scandium'>Sc</td>
+		<td class='hidden' onClick='elClick(event)' title='22 Titan'>Ti</td>
+		<td class='hidden' onClick='elClick(event)' title='23 Vanadium'>V</td>
+		<td class='hidden' onClick='elClick(event)' title='24 Chrom'>Cr</td>
+		<td class='hidden' onClick='elClick(event)' title='25 Mangan'>Mn</td>
+		<td class='hidden' onClick='elClick(event)' title='26 Eisen'>Fe</td>
+		<td class='hidden' onClick='elClick(event)' title='27 Kobalt'>Co</td>
+		<td class='hidden' onClick='elClick(event)' title='28 Nickel'>Ni</td>
+		<td class='hidden' onClick='elClick(event)' title='29 Kupfer'>Cu</td>
+		<td class='hidden' onClick='elClick(event)' title='30 Zink'>Zn</td>
+		<td class='hidden' onClick='elClick(event)' title='31 Gallium'>Ga</td>
+		<td class='hidden' onClick='elClick(event)' title='32 Germanium'>Ge</td>
+		<td class='hidden' onClick='elClick(event)' title='33 Arsen'>As</td>
+		<td class='hidden' onClick='elClick(event)' title='34 Selen'>Se</td>
+		<td class='hidden' onClick='elClick(event)' title='35 Brom'>Br</td>
+		<td class='hidden' onClick='elClick(event)' title='36 Krypton'>Kr</td>
 	</tr>
 	<tr class='main'>
 		<td class="p">5</td>
-		<td class='hidden' onClick='flipToBack()'>Rb</td>
-		<td class='hidden' onClick='flipToBack()'>Sr</td>
-		<td class='hidden' onClick='flipToBack()'>Y</td>
-		<td class='hidden' onClick='flipToBack()'>Zr</td>
-		<td class='hidden' onClick='flipToBack()'>Nb</td>
-		<td class='hidden' onClick='flipToBack()'>Mo</td>
-		<td class='hidden' onClick='flipToBack()'>Tc</td>
-		<td class='hidden' onClick='flipToBack()'>Ru</td>
-		<td class='hidden' onClick='flipToBack()'>Rh</td>
-		<td class='hidden' onClick='flipToBack()'>Pd</td>
-		<td class='hidden' onClick='flipToBack()'>Ag</td>
-		<td class='hidden' onClick='flipToBack()'>Cd</td>
-		<td class='hidden' onClick='flipToBack()'>In</td>
-		<td class='hidden' onClick='flipToBack()'>Sn</td>
-		<td class='hidden' onClick='flipToBack()'>Sb</td>
-		<td class='hidden' onClick='flipToBack()'>Te</td>
-		<td class='hidden' onClick='flipToBack()'>I</td>
-		<td class='hidden' onClick='flipToBack()'>Xe</td>
+		<td class='hidden' onClick='elClick(event)' title='37 Rubidium'>Rb</td>
+		<td class='hidden' onClick='elClick(event)' title='38 Strontium'>Sr</td>
+		<td class='hidden' onClick='elClick(event)' title='39 Yttrium'>Y</td>
+		<td class='hidden' onClick='elClick(event)' title='40 Zirkonium'>Zr</td>
+		<td class='hidden' onClick='elClick(event)' title='41 Niob'>Nb</td>
+		<td class='hidden' onClick='elClick(event)' title='42 Molybdän'>Mo</td>
+		<td class='hidden' onClick='elClick(event)' title='43 Technetium'>Tc</td>
+		<td class='hidden' onClick='elClick(event)' title='44 Ruthenium'>Ru</td>
+		<td class='hidden' onClick='elClick(event)' title='45 Rhodium'>Rh</td>
+		<td class='hidden' onClick='elClick(event)' title='46 Palladium'>Pd</td>
+		<td class='hidden' onClick='elClick(event)' title='47 Silber'>Ag</td>
+		<td class='hidden' onClick='elClick(event)' title='48 Cadmium'>Cd</td>
+		<td class='hidden' onClick='elClick(event)' title='49 Indium'>In</td>
+		<td class='hidden' onClick='elClick(event)' title='50 Zinn'>Sn</td>
+		<td class='hidden' onClick='elClick(event)' title='51 Antimon'>Sb</td>
+		<td class='hidden' onClick='elClick(event)' title='52 Tellur'>Te</td>
+		<td class='hidden' onClick='elClick(event)' title='53 Iod'>I</td>
+		<td class='hidden' onClick='elClick(event)' title='54 Xenon'>Xe</td>
 	</tr>
 	<tr class='main'>
 		<td class="p">6</td>
-		<td class='hidden' onClick='flipToBack()'>Cs</td>
-		<td class='hidden' onClick='flipToBack()'>Ba</td>
-		<td class='l hidden' onClick='flipToBack()'>La</td>
-		<td class='r hidden' onClick='flipToBack()'>Hf</td>
-		<td class='hidden' onClick='flipToBack()'>Ta</td>
-		<td class='hidden' onClick='flipToBack()'>W</td>
-		<td class='hidden' onClick='flipToBack()'>Re</td>
-		<td class='hidden' onClick='flipToBack()'>Os</td>
-		<td class='hidden' onClick='flipToBack()'>Ir</td>
-		<td class='hidden' onClick='flipToBack()'>Pt</td>
-		<td class='hidden' onClick='flipToBack()'>Au</td>
-		<td class='hidden' onClick='flipToBack()'>Hg</td>
-		<td class='hidden' onClick='flipToBack()'>Tl</td>
-		<td class='hidden' onClick='flipToBack()'>Pb</td>
-		<td class='hidden' onClick='flipToBack()'>Bi</td>
-		<td class='hidden' onClick='flipToBack()'>Po</td>
-		<td class='hidden' onClick='flipToBack()'>At</td>
-		<td class='hidden' onClick='flipToBack()'>Rn</td>
+		<td class='hidden' onClick='elClick(event)' title='55 Caesium'>Cs</td>
+		<td class='hidden' onClick='elClick(event)' title='56 Barium'>Ba</td>
+		<td class='hidden l' onClick='elClick(event)' title='57 Lanthan'>La</td>
+		<td class='hidden r' onClick='elClick(event)' title='72 Hafnium'>Hf</td>
+		<td class='hidden' onClick='elClick(event)' title='73 Tantal'>Ta</td>
+		<td class='hidden' onClick='elClick(event)' title='74 Wolfram'>W</td>
+		<td class='hidden' onClick='elClick(event)' title='75 Rhenium'>Re</td>
+		<td class='hidden' onClick='elClick(event)' title='76 Osmium'>Os</td>
+		<td class='hidden' onClick='elClick(event)' title='77 Iridium'>Ir</td>
+		<td class='hidden' onClick='elClick(event)' title='78 Platin'>Pt</td>
+		<td class='hidden' onClick='elClick(event)' title='79 Gold'>Au</td>
+		<td class='hidden' onClick='elClick(event)' title='80 Quecksilber'>Hg</td>
+		<td class='hidden' onClick='elClick(event)' title='81 Thallium'>Tl</td>
+		<td class='hidden' onClick='elClick(event)' title='82 Blei'>Pb</td>
+		<td class='hidden' onClick='elClick(event)' title='83 Bismut'>Bi</td>
+		<td class='hidden' onClick='elClick(event)' title='84 Polonium'>Po</td>
+		<td class='hidden' onClick='elClick(event)' title='85 Astat'>At</td>
+		<td class='hidden' onClick='elClick(event)' title='86 Radon'>Rn</td>
 	</tr>
 	<tr class='main'>
 		<td class="p">7</td>
-		<td class='hidden' onClick='flipToBack()'>Fr</td>
-		<td class='hidden' onClick='flipToBack()'>Ra</td>
-		<td class='l hidden' onClick='flipToBack()'>Ac</td>
-		<td class='r hidden' onClick='flipToBack()'>Rf</td>
-		<td class='hidden' onClick='flipToBack()'>Db</td>
-		<td class='hidden' onClick='flipToBack()'>Sg</td>
-		<td class='hidden' onClick='flipToBack()'>Bh</td>
-		<td class='hidden' onClick='flipToBack()'>Hs</td>
-		<td class='hidden' onClick='flipToBack()'>Mt</td>
-		<td class='hidden' onClick='flipToBack()'>Ds</td>
-		<td class='hidden' onClick='flipToBack()'>Rg</td>
-		<td class='hidden' onClick='flipToBack()'>Cn</td>
-		<td class='hidden' onClick='flipToBack()'>Nh</td>
-		<td class='hidden' onClick='flipToBack()'>Fl</td>
-		<td class='hidden' onClick='flipToBack()'>Mc</td>
-		<td class='hidden' onClick='flipToBack()'>Lv</td>
-		<td class='hidden' onClick='flipToBack()'>Ts</td>
-		<td class='hidden' onClick='flipToBack()'>Og</td>
+		<td class='hidden' onClick='elClick(event)' title='87 Francium'>Fr</td>
+		<td class='hidden' onClick='elClick(event)' title='88 Radium'>Ra</td>
+		<td class='hidden l' onClick='elClick(event)' title='89 Actinium'>Ac</td>
+		<td class='hidden r' onClick='elClick(event)' title='104 Rutherfordium'>Rf</td>
+		<td class='hidden' onClick='elClick(event)' title='105 Dubnium'>Db</td>
+		<td class='hidden' onClick='elClick(event)' title='106 Seaborgium'>Sg</td>
+		<td class='hidden' onClick='elClick(event)' title='107 Bohrium'>Bh</td>
+		<td class='hidden' onClick='elClick(event)' title='108 Hassium'>Hs</td>
+		<td class='hidden' onClick='elClick(event)' title='109 Meitnerium'>Mt</td>
+		<td class='hidden' onClick='elClick(event)' title='110 Darmstadtium'>Ds</td>
+		<td class='hidden' onClick='elClick(event)' title='111 Roentgenium'>Rg</td>
+		<td class='hidden' onClick='elClick(event)' title='112 Copernicium'>Cn</td>
+		<td class='hidden' onClick='elClick(event)' title='113 Nihonium'>Nh</td>
+		<td class='hidden' onClick='elClick(event)' title='114 Flerovium'>Fl</td>
+		<td class='hidden' onClick='elClick(event)' title='115 Moscovium'>Mc</td>
+		<td class='hidden' onClick='elClick(event)' title='116 Livermorium'>Lv</td>
+		<td class='hidden' onClick='elClick(event)' title='117 Tenness'>Ts</td>
+		<td class='hidden' onClick='elClick(event)' title='118 Oganesson'>Og</td>
 	</tr>
 	<tr id='emptyRow'>
 		<td class="e"></td><td class="e"></td>
@@ -208,48 +215,58 @@
 	<tr>
 		<td class="e"></td>
 		<td class="p x" colspan=3>Lanthan.:</td>
-		<td class='r hidden'onClick='flipToBack()'>Ce</td>
-		<td class='hidden' onClick='flipToBack()'>Pr</td>
-		<td class='hidden' onClick='flipToBack()'>Nd</td>
-		<td class='hidden' onClick='flipToBack()'>Pm</td>
-		<td class='hidden' onClick='flipToBack()'>Sm</td>
-		<td class='hidden' onClick='flipToBack()'>Eu</td>
-		<td class='hidden' onClick='flipToBack()'>Gd</td>
-		<td class='hidden' onClick='flipToBack()'>Tb</td>
-		<td class='hidden' onClick='flipToBack()'>Dy</td>
-		<td class='hidden' onClick='flipToBack()'>Ho</td>
-		<td class='hidden' onClick='flipToBack()'>Er</td>
-		<td class='hidden' onClick='flipToBack()'>Tm</td>
-		<td class='hidden' onClick='flipToBack()'>Yb</td>
-		<td class='hidden' onClick='flipToBack()'>Lu</td>
+		<td class='r hidden' onClick='elClick(event)' title='58 Cer'>Ce</td>
+		<td class='hidden' onClick='elClick(event)' title='59 Praseodym'>Pr</td>
+		<td class='hidden' onClick='elClick(event)' title='60 Neodym'>Nd</td>
+		<td class='hidden' onClick='elClick(event)' title='61 Promethium'>Pm</td>
+		<td class='hidden' onClick='elClick(event)' title='62 Samarium'>Sm</td>
+		<td class='hidden' onClick='elClick(event)' title='63 Europium'>Eu</td>
+		<td class='hidden' onClick='elClick(event)' title='64 Gadolinium'>Gd</td>
+		<td class='hidden' onClick='elClick(event)' title='65 Terbium'>Tb</td>
+		<td class='hidden' onClick='elClick(event)' title='66 Dysprosium'>Dy</td>
+		<td class='hidden' onClick='elClick(event)' title='67 Holmium'>Ho</td>
+		<td class='hidden' onClick='elClick(event)' title='68 Erbium'>Er</td>
+		<td class='hidden' onClick='elClick(event)' title='69 Thulium'>Tm</td>
+		<td class='hidden' onClick='elClick(event)' title='70 Ytterbium'>Yb</td>
+		<td class='hidden' onClick='elClick(event)' title='71 Lutetium'>Lu</td>
 	</tr>
 	<tr>
 		<td class="e"></td>
 		<td class="p x" colspan=3>Actin.:</td>
-		<td class='r hidden'onClick='flipToBack()'>Th</td>
-		<td class='hidden' onClick='flipToBack()'>Pa</td>
-		<td class='hidden' onClick='flipToBack()'>U</td>
-		<td class='hidden' onClick='flipToBack()'>Np</td>
-		<td class='hidden' onClick='flipToBack()'>Pu</td>
-		<td class='hidden' onClick='flipToBack()'>Am</td>
-		<td class='hidden' onClick='flipToBack()'>Cm</td>
-		<td class='hidden' onClick='flipToBack()'>Bk</td>
-		<td class='hidden' onClick='flipToBack()'>Cf</td>
-		<td class='hidden' onClick='flipToBack()'>Es</td>
-		<td class='hidden' onClick='flipToBack()'>Fm</td>
-		<td class='hidden' onClick='flipToBack()'>Md</td>
-		<td class='hidden' onClick='flipToBack()'>No</td>
-		<td class='hidden' onClick='flipToBack()'>Lr</td>
+		<td class='r hidden' onClick='elClick(event)' title='90 Thorium'>Th</td>
+		<td class='hidden' onClick='elClick(event)' title='91 Protactinium'>Pa</td>
+		<td class='hidden' onClick='elClick(event)' title='92 Uran'>U</td>
+		<td class='hidden' onClick='elClick(event)' title='93 Neptunium'>Np</td>
+		<td class='hidden' onClick='elClick(event)' title='94 Plutonium'>Pu</td>
+		<td class='hidden' onClick='elClick(event)' title='95 Americium'>Am</td>
+		<td class='hidden' onClick='elClick(event)' title='96 Curium'>Cm</td>
+		<td class='hidden' onClick='elClick(event)' title='97 Berkelium'>Bk</td>
+		<td class='hidden' onClick='elClick(event)' title='98 Californium'>Cf</td>
+		<td class='hidden' onClick='elClick(event)' title='99 Einsteinium'>Es</td>
+		<td class='hidden' onClick='elClick(event)' title='100 Fermium'>Fm</td>
+		<td class='hidden' onClick='elClick(event)' title='101 Mendelevium'>Md</td>
+		<td class='hidden' onClick='elClick(event)' title='102 Nobelium'>No</td>
+		<td class='hidden' onClick='elClick(event)' title='103 Lawrencium'>Lr</td>
 	</tr>
 </table>
 
 
 <div id="scrollDiv"></div>
 <script>
+	function elClick(event) {
+		// test if element with id back exists
+		let back = document.getElementById("back");
+		if (back == null && false) {
+			flipToBack();
+		} else if (window.matchMedia("(any-hover: none)").matches) {
+			tooltipElement(event);
+		}
+	}
+	
 	function markCell() {
 		var periode = parseInt("{{period}}");
 		var gruppe = parseInt("{{group}}");
-		var name = parseInt("Helium");
+		var name = parseInt("{{name}}");
 
 		if (!periode) {
 			if ("{{period}}" === "La") {
@@ -274,63 +291,79 @@
 		cell.classList.remove("hidden");
 	}
 	markCell(); 
-
-function flipToBack() {
-	if (typeof pycmd !== "undefined") {
-		pycmd("ans")
-	} else if (typeof study !== "undefined") {
-		study.drawAnswer()
-	} else if (typeof AnkiDroidJS !== "undefined") {
-		showAnswer()
-	} else if (window.anki && window.sendMessage2) {
-		window.sendMessage("ankitap", "midCenter")
-	}
-}
-
-function scrollCenter() {
-	document.getElementById("nameTag").innerHTML = "hallo";
-	let back = document.getElementById("back");
-	if (back != null && typeof AnkiDroidJS === "undefined") {
-		return;
+	
+	function flipToBack() {
+		if (typeof pycmd !== "undefined") {
+			pycmd("ans")
+		} else if (typeof study !== "undefined") {
+			study.drawAnswer()
+		} else if (typeof AnkiDroidJS !== "undefined") {
+			showAnswer()
+		} else if (window.anki && window.sendMessage2) {
+			window.sendMessage("ankitap", "midCenter")
+		}
 	}
 	
-	let bigCell = document.getElementById("bigCell");
-	const height = window.innerHeight;
-	
-	let top = 0;
-	if (height < 380) {
-		let table = document.getElementById("Periodensystem");
-		let topCell = table.children[0].children[2].children[1];
-		top = topCell.getBoundingClientRect().top + window.scrollY - 2;
-	}
-
-	let scrollDiv = document.getElementById("scrollDiv");
-	scrollDiv.style.top = `${top}px`;
-	scrollDiv.style.left = `${bigCell.getBoundingClientRect().left + window.scrollX}px`;
-	scrollDiv.style.width = `${bigCell.offsetWidth}px`;
-
-	scrollDiv.scrollIntoView({
-		behavior: 'auto',
-		inline: 'center',
-		block: 'start'});
-
-	let viewport = document.querySelector("meta[name=viewport]");
-	document.getElementById("nameTag").innerHTML = visualViewport.scale;
-	if(viewport === null || viewport === undefined) {
-		var metaTag=document.createElement('meta');
-		metaTag.name = "viewport"
-		// metaTag.content = "width=500, initial-scale=1"
-		document.getElementsByTagName('head')[0].appendChild(metaTag);
-	} else {
-		// viewport.setAttribute('content', 'width=1000, initial-scale=1');
+	function tooltipElement(event) {
+		// create short tooltip popup when element is clicked which displays the title attribute of the event target
+		let tooltip = document.createElement("div");
+		tooltip.classList.add("tooltip");
+		tooltip.innerHTML = event.target.title;
+		document.body.appendChild(tooltip);
+		
+		let width = tooltip.offsetWidth;
+		let height = tooltip.offsetHeight;
+		
+		// position tooltip above clicked element
+		let y = event.target.getBoundingClientRect().top + window.scrollY - height - 4;
+		let x = event.target.getBoundingClientRect().left + window.scrollX - width / 2 + event.target.offsetWidth / 2;
+		
+		// clamp x
+		if (x < 0) {
+			x = 0;
+		} else if (x + width > window.innerWidth) {
+			x = window.innerWidth - width;
+		}
+		
+		tooltip.style.top = `${y}px`;
+		tooltip.style.left = `${x}px`;
+		
+		setTimeout(function(){
+			tooltip.remove();
+		}, 3000);
 	}
 	
-}
+	function scrollCenter() {
+		let back = document.getElementById("back");
+		if (back != null && typeof AnkiDroidJS === "undefined") {
+			return;
+		}
+		
+		let bigCell = document.getElementById("bigCell");
+		const height = window.innerHeight;
+		
+		let top = 0;
+		if (height < 380) {
+			let table = document.getElementById("Periodensystem");
+			let topCell = table.children[0].children[2].children[1];
+			top = topCell.getBoundingClientRect().top + window.scrollY - 2;
+		}
+		
+		let scrollDiv = document.getElementById("scrollDiv");
+		scrollDiv.style.top = `${top}px`;
+		scrollDiv.style.left = `${bigCell.getBoundingClientRect().left + window.scrollX}px`;
+		scrollDiv.style.width = `${bigCell.offsetWidth}px`;
 
-scrollCenter();
-for (let time of [20, 50, 100, 5000]) {
-	setTimeout(function() {
-		scrollCenter();
-	}, time);
-}
+		scrollDiv.scrollIntoView({
+			behavior: 'auto',
+			inline: 'center',
+			block: 'start'});
+	}
+
+	scrollCenter();
+	for (let time of [20, 50, 150]) {
+		setTimeout(function(){
+			scrollCenter();
+		}, time);
+	}
 </script>

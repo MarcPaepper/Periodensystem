@@ -1,24 +1,4 @@
-<link rel="stylesheet" href="Style.css">
-
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=0.5" />
-</head>
-<div id="nameTag" class="disabled">
-	{{name}}
-</div>
-
-
-
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=0.5" />
-</head>
-<div id="nameTag" class="disabled">
-	{{name}}
-</div>
-
-
-
-<table id="Periodensystem" class="gName">
+<table id="Periodensystem" class="gLoc">
 	<tr class="hauptgr">
 		<td class="e"></td>
 		<td>I</td>
@@ -66,7 +46,7 @@
 		<td class="p">1</td>
 		<td class='hidden' onClick='elClick(event)' data-title='Wasserstoff [1]'>H</td>
 		<td class='e' ></td>
-		<td class='disabled' id='nameTagTD' colspan='14'>{{name}}</td>
+		<td id='nameTagTD' colspan='14'>{{name}}</td>
 		<td style='display: none'></td>
 		<td style='display: none'></td>
 		<td style='display: none'></td>
@@ -249,130 +229,3 @@
 		<td class='hidden' onClick='elClick(event)' data-title='Lawrencium [103]'>Lr</td>
 	</tr>
 </table>
-
-
-<div id="scrollDiv"></div>
-<script>
-	function elClick(event) {
-		// test if element with id back exists
-		let back = document.getElementById("back");
-		if (back == null && false) {
-			flipToBack();
-		} else if (window.matchMedia("(any-hover: none)").matches) {
-			tooltipElement(event);
-		}
-	}
-	
-	function markCell() {
-		var periode = parseInt("{{period}}");
-		var gruppe = parseInt("{{group}}");
-		var name = parseInt("{{name}}");
-
-		if (!periode) {
-			if ("{{period}}" === "La") {
-				periode = 9;
-				gruppe = gruppe + 1;
-			} else if ("{{period}}" === "Ac") {
-				periode = 10;
-				gruppe = gruppe + 1;
-			} else {
-				periode = 4;
-			}
-		}
-		if (!gruppe) {
-				gruppe = 1;
-		}
-		
-		let table = document.getElementById("Periodensystem");
-		let cell = table.children[0].children[periode + 1].children[gruppe];
-		cell.classList.add("a");
-		cell.classList.add("revealed");
-		cell.classList.add("noText");
-		cell.classList.remove("hidden");
-	}
-	markCell(); 
-	
-	function flipToBack() {
-		if (typeof pycmd !== "undefined") {
-			pycmd("ans")
-		} else if (typeof study !== "undefined") {
-			study.drawAnswer()
-		} else if (typeof AnkiDroidJS !== "undefined") {
-			showAnswer()
-		} else if (window.anki && window.sendMessage2) {
-			window.sendMessage("ankitap", "midCenter")
-		}
-	}
-	
-	function tooltipElement(event) {
-		// create short tooltip popup when element is clicked which displays the title attribute of the event target
-		let tooltip = document.createElement("div");
-		tooltip.classList.add("tooltip");
-		tooltip.innerHTML = event.target.title;
-		document.body.appendChild(tooltip);
-		
-		let width = tooltip.offsetWidth;
-		let height = tooltip.offsetHeight;
-		
-		// position tooltip above clicked element
-		let y = event.target.getBoundingClientRect().top + window.scrollY - height - 4;
-		let x = event.target.getBoundingClientRect().left + window.scrollX - width / 2 + event.target.offsetWidth / 2;
-		
-		// clamp x
-		if (x < 0) {
-			x = 0;
-		} else if (x + width > window.innerWidth) {
-			x = window.innerWidth - width;
-		}
-		
-		tooltip.style.top = `${y}px`;
-		tooltip.style.left = `${x}px`;
-		
-		setTimeout(function(){
-			tooltip.remove();
-		}, 3000);
-	}
-	
-	function scrollCenter() {
-		let back = document.getElementById("back");
-		if (back != null && typeof AnkiDroidJS === "undefined") {
-			return;
-		}
-		
-		let bigCell = document.getElementById("bigCell");
-		const height = window.innerHeight;
-		
-		let top = 0;
-		if (height < 380) {
-			let table = document.getElementById("Periodensystem");
-			let topCell = table.children[0].children[2].children[1];
-			top = topCell.getBoundingClientRect().top + window.scrollY - 2;
-		}
-		
-		let scrollDiv = document.getElementById("scrollDiv");
-		scrollDiv.style.top = `${top}px`;
-		scrollDiv.style.left = `${bigCell.getBoundingClientRect().left + window.scrollX}px`;
-		scrollDiv.style.width = `${bigCell.offsetWidth}px`;
-
-		scrollDiv.scrollIntoView({
-			behavior: 'auto',
-			inline: 'center',
-			block: 'start'});
-	}
-
-	scrollCenter();
-	for (let time of [20, 50, 150]) {
-		setTimeout(function(){
-			scrollCenter();
-		}, time);
-	}
-	
-	// change all data-title attributes to title attributes
-	function enableTitles() {
-		let elements = document.querySelectorAll("[data-title]");
-		for (let element of elements) {
-			element.title = element.dataset.title;
-			element.removeAttribute("data-title");
-		}
-	}
-</script>

@@ -117,22 +117,41 @@ for i, name in enumerate(sortedNames):
 	scores256[name] = int((length - i) / length * 255)
 	scores[name] = i * 1000
 
-types = ["gLoc", "gName", "visWiki", "scores"]
-outputFiles = ["gLocTable", "gNameTable", "wikiViews", "scores"]
+directions = ["up", "down", "left", "right"]
 
-for type, outputFile in zip(types, outputFiles):
-	isGuessLoc = type == "gLoc"
-	isGuessName = type == "gName"
-	isVis = type == "visWiki" or type == "scores"
+# Generate cards
+languages = ["en", "fr", "de", "it", "pt", "es"]
+# import languages.json
+with open("Output/languages.json", "r") as f:
+	translations = json.load(f)
+
+for lang in languages:
+	# Clean or create folder
+	if os.path.exists(f"Output/{lang}"):
+		for file in os.listdir(f"Output/{lang}"):
+			os.remove(f"Output/{lang}/{file}")
+	else:
+		os.makedirs(f"Output/{lang}")
 	
-	lookup = wViews256 if type == "visWiki" else scores256
-	lookupD = wViews if type == "visWiki" else scores
+	types = ["gLoc", "gName", "visWiki", "scores"]
+	if (lang == "en"):
+		outputFiles = ["gLocTable", "gNameTable", "wikiViews", "scores"]
+	else:
+		outputFiles = ["gLocTable", "gNameTable"]
 
-	oct =  "onClick=" + ("'flipToBack()'" if isGuessName else "'wrongPick(event)'") # meaning on click text
-	# hc  = "" if isGuessName else " hidden" # meaning hidden class
-	# ha  = "" if isGuessName else " class='hidden' " # meaning hidden attribute
+	for type, outputFile in zip(types, outputFiles):
+		isGuessLoc = type == "gLoc"
+		isGuessName = type == "gName"
+		isVis = type == "visWiki" or type == "scores"
+		
+		lookup = wViews256 if type == "visWiki" else scores256
+		lookupD = wViews if type == "visWiki" else scores
 
-	output = f"""<table id="Periodensystem" class="{type}">
+		oct =  "onClick='elClick(event)'"; # meaning on click text
+		# hc  = "" if isGuessName else " hidden" # meaning hidden class
+		# ha  = "" if isGuessName else " class='hidden' " # meaning hidden attribute
+
+		output = f"""<table id="Periodensystem" class="{type}">
 	<tr class="hauptgr">
 		<td class="e"></td>
 		<td>I</td>
@@ -177,123 +196,112 @@ for type, outputFile in zip(types, outputFiles):
 		<td>18</td>
 	</tr>"""
 
-	col = ""
-	addTxt = ""
-	
-	# add main group
-	for i, td in enumerate(symbolsMn):
-		output += "\n\t<tr class='main'>\n\t\t<td class=\"p\">" + str(i+1) + "</td>"
-		for j, symbol in enumerate(td):
-			if symbol == "-":
-				output += "\n\t\t<td style='display: none'></td>"
-			elif symbol == "": # meaning empty cell
-				output += "\n\t\t<td class=\"e\"></td>"
-			elif symbol == "NT": # meaning name tag
-				output += "\n\t\t<td id='nameTagTD'"
-				output += " class='disabled'" if type == "gName" else ""
-				output += " colspan='14'>{{name}}</td>"
-			elif symbol == "bc": # meaning big cell
-				output += "\n\t\t<td id='bigCell' class='e' colspan='2'></td>"
-			else:
-				# add color if in vis mode
+		col = ""
+		addTxt = ""
+		
+		def get_cell(symbol, i, j, isXtra, classes, attr):
+			addTxt = ""
+			
+			# add color if in vis mode
+			if symbol != "" and symbol != "{{name}}":
 				if isVis:
-					col = f" style='background-color: rgb{colorsMagma[lookup[englishNamesU[symbol]]]}'"
+					if attr == None:
+						attr = []
+					attr.append(f"style='background-color: rgb{colorsMagma[lookup[englishNamesU[symbol]]]}'")
 					addTxt = f"<br><span class='views'>{lookupD[englishNamesU[symbol]] // 1000}k</span>"
 				if type == "visWiki":
 					addTxt = f"<br><span class='views'>{wViews[englishNamesU[symbol]] // 1000}k</span>"
-				if ((i == 5 or i == 6) and j == 2): # add indicator for actinides and lactinides
-					output += f"\n\t\t<td class='l hidden' {oct}{col}>{symbol}{addTxt}</td>"
-				elif ((i == 5 or i == 6) and j == 3):
-					output += f"\n\t\t<td class='r hidden' {oct}{col}>{symbol}{addTxt}</td>"
+			
+			if "hidden" in classes:
+				attr.append(oct)
+				
+				# create tooltip text with additional info
+				atomic_number = sanl.index(symbol) + 1
+				name = translations[symbol][lang]
+				attr.append(f"data-title='{name} [{atomic_number}]'")
+			
+			classesStr = "" if len(classes) == 0 else " class='" + " ".join(classes) + "'"
+			
+			attrStr = " ".join(attr) if attr != None else ""
+			
+			return f"\n\t\t<td{classesStr} {attrStr}>{symbol}{addTxt}</td>"
+		
+		# add main group
+		for i, td in enumerate(symbolsMn):
+			output += "\n\t<tr class='main'>\n\t\t<td class=\"p\">" + str(i+1) + "</td>"
+			for j, symbol in enumerate(td):
+				attr = []
+				classes = []
+				
+				if symbol == "-":
+					attr.append("style='display: none'")
+					symbol = ""
+				elif symbol == "": # meaning empty cell
+					classes.append("e")
+					symbol = ""
+				elif symbol == "NT": # meaning name tag
+					attr.append("id='nameTagTD'")
+					attr.append("colspan='14'")
+					if type == "gName":
+						classes.append("disabled")
+					symbol = "{{name}}"
+				elif symbol == "bc": # meaning big cell
+					classes.append("e")
+					attr.append("colspan='2'")
+					attr.append("id='bigCell'")
+					symbol = ""
 				else:
-					output += f"\n\t\t<td class='hidden' {oct}{col}>{symbol}{addTxt}</td>"
+					classes.append("hidden")
+					if ((i == 5 or i == 6) and j == 2): # add indicator for actinides and lactinides
+							classes.append("l")
+					elif ((i == 5 or i == 6) and j == 3):
+							classes.append("r")
+				
+				output += get_cell(symbol, i, j, False, classes, attr)
+			output += "\n\t</tr>"
+
+		# empty row
+		output += "\n\t<tr id='emptyRow'>\n\t\t<td class=\"e\"></td><td class=\"e\"></td>\n\t</tr>"
+
+
+		# add lanthanides
+		output += f"""
+	<tr>
+		<td class="e"></td>
+		<td class="p x" colspan=3>Lanthan.:</td>"""
+		
+		for i in range(0, len(symbolsXtra[0])):
+			classes = ["r", "hidden"] if i == 0 else ["hidden"]
+			
+			symbol = symbolsXtra[0][i]
+			output += get_cell(symbol, 0, i, True, classes, [])
+		output += "\n\t</tr>"
+		
+		# add actinides
+		output += f"""
+	<tr>
+		<td class="e"></td>
+		<td class="p x" colspan=3>Actin.:</td>"""
+		
+		for i in range(0, len(symbolsXtra[1])):
+			classes = ["r", "hidden"] if i == 0 else ["hidden"]
+			
+			symbol = symbolsXtra[1][i]
+			output += get_cell(symbol, 0, i, True, classes, [])
 		output += "\n\t</tr>"
 
-	# empty row
-	output += "\n\t<tr id='emptyRow'>\n\t\t<td class=\"e\"></td><td class=\"e\"></td>\n\t</tr>"
 
-
-	# add lanthanides
-	if isVis:
-		col = f" style='background-color: rgb{colorsMagma[lookup[englishNamesU[symbolsXtra[0][0]]]]}'"
-		addTxt = f"<br><span class='views'>{lookupD[englishNamesU[symbolsXtra[0][0]]] // 1000}k</span>"
-	if type == "visWiki":
-		addTxt = f"<br><span class='views'>{wViews[englishNamesU[symbolsXtra[0][0]]] // 1000}k</span>"
-	output += f"""
-	<tr>
-		<td class="e"></td>
-		<td class="p x" colspan=3>Lanthan.:</td>
-		<td class='r hidden'{oct}{col}>{symbolsXtra[0][0]}{addTxt}</td>"""
+		output += "\n</table>"
 		
-	for i in range(1, len(symbolsXtra[0])):
-		symbol = symbolsXtra[0][i]
-		
-		# add color if in vis mode
-		if isVis:
-			col = f" style='background-color: rgb{colorsMagma[lookup[englishNamesU[symbol]]]}'"
-			addTxt = f"<br><span class='views'>{lookupD[englishNamesU[symbol]] // 1000}k</span>"
-		if type == "visWiki":
-			addTxt = f"<br><span class='views'>{wViews[englishNamesU[symbol]] // 1000}k</span>"
-		output += f"\n\t\t<td class='hidden' {oct}{col}>{symbol}{addTxt}</td>"
-	output += "\n\t</tr>"
+		# write to file
+		with open(f"Output/{lang}/{outputFile}.html", "w") as f:
+			f.write(output)
 
-
-	# add actinides
-	if isVis:
-		col = f" style='background-color: rgb{colorsMagma[lookup[englishNamesU[symbolsXtra[1][0]]]]}'"
-		addTxt = f"<br><span class='views'>{lookupD[englishNamesU[symbolsXtra[1][0]]] // 1000}k</span>"
-	if type == "visWiki":
-		addTxt = f"<br><span class='views'>{wViews[englishNamesU[symbolsXtra[1][0]]] // 1000}k</span>"
-	output += f"""
-	<tr>
-		<td class="e"></td>
-		<td class="p x" colspan=3>Actin.:</td>
-		<td class='r hidden'{oct}{col}>{symbolsXtra[1][0]}{addTxt}</td>"""
-		
-	for i in range(1, len(symbolsXtra[1])):
-		symbol = symbolsXtra[1][i]
-		
-		# add color if in vis mode
-		if isVis:
-			col = f" style='background-color: rgb{colorsMagma[lookup[englishNamesU[symbol]]]}'"
-			addTxt = f"<br><span class='views'>{lookupD[englishNamesU[symbol]] // 1000}k</span>"
-		if type == "visWiki":
-			addTxt = f"<br><span class='views'>{wViews[englishNamesU[symbol]] // 1000}k</span>"
-		output += f"\n\t\t<td class='hidden' {oct}{col}>{symbol}{addTxt}</td>"
-	output += "\n\t</tr>"
-
-
-	output += "\n</table>"
-
-
-	# clear file if exists
-	if os.path.exists(f"Output/{outputFile}.html"):
-		os.remove(f"Output/{outputFile}.html")
-
-	# write to file TableFull.html
-	with open(f"Output/{outputFile}.html", "w") as f:
-		f.write(output)
-
-directions = ["up", "down", "left", "right"]
-
-# Generate cards
-languages = ["en", "fr", "de", "it", "pt", "es"]
-# import languages.json
-with open("Output/languages.json", "r") as f:
-	translations = json.load(f)
-
-# Clean or create folder "Cards"
-if os.path.exists("Output/Cards"):
-	for file in os.listdir("Output/Cards"):
-		os.remove(f"Output/Cards/{file}")
-else:
-	os.makedirs("Output/Cards")
-
-for lang in languages:
 	output = ""
 	
 	for name in sortedNames:
 		symbol = englishNamesRev[name.lower()]
+		atomic_number = sanl.index(symbol) + 1
 		
 		xtra = symbol in symbolsXtra[0] or symbol in symbolsXtra[1]
 		ref_table = symbolsXtra if xtra else symbolsMn
@@ -317,13 +325,13 @@ for lang in languages:
 		
 		group = j + 1
 		
-		output += f"""{period};{group};{name};{neighbors[0]};{neighbors[1]};{neighbors[2]};{neighbors[3]}\n"""
+		output += f"""{symbol};{name};{period};{group};{atomic_number};{";".join(neighbors)}\n"""
 	
 	# delete last \n
 	output = output[:-1]
 	
 	# write to file
-	with open(f"Output/Cards/{lang}.csv", "w") as f:
+	with open(f"Output/{lang}/cards.csv", "w") as f:
 		f.write(output)
 
 print("Done!")

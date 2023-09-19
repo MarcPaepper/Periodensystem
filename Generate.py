@@ -134,7 +134,10 @@ for lang in languages:
 		os.makedirs(f"Output/{lang}")
 	
 	types = ["gLoc", "gName", "visWiki", "scores"]
-	outputFiles = ["gLocTable", "gNameTable", "wikiViews", "scores"]
+	if (lang == "en"):
+		outputFiles = ["gLocTable", "gNameTable", "wikiViews", "scores"]
+	else:
+		outputFiles = ["gLocTable", "gNameTable"]
 
 	for type, outputFile in zip(types, outputFiles):
 		isGuessLoc = type == "gLoc"
@@ -215,7 +218,7 @@ for lang in languages:
 				# create tooltip text with additional info
 				atomic_number = sanl.index(symbol) + 1
 				name = translations[symbol][lang]
-				attr.append(f"title='{atomic_number} {name}'")
+				attr.append(f"data-title='{name} [{atomic_number}]'")
 			
 			classesStr = "" if len(classes) == 0 else " class='" + " ".join(classes) + "'"
 			

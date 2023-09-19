@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element Display</title>
+    <style>
+        /* Styling for the container div */
+        .element-container {
+            border: 4px solid #333; /* Thick border */
+            display: inline-block;
+            text-align: center;
+			height: 130px;
+			width: 90px;
+			box-sizing: content-box;
+        }
+
+        /* Styling for the upper part displaying the element symbol */
+        .element-symbol {
+            font-size: 48px;
+			height: 80px;
+			width: 100%;
+			line-height: 82px;
+        }
+
+        /* Styling for the lower part displaying the full element name */
+        .element-name-cont {
+			width: 100%;
+            border-top: 2px solid #333; /* Add a border at the top of the lower part */
+        }
+		.element-name {
+			background: pink;
+			font-size: 16px; /* Adjust font size as needed */
+			word-wrap: break-word;
+		}
+    </style>
+</head>
+<body>
+    <!-- Replace 'Hg' and 'Mercury' with your desired element symbol and name -->
+    <div class="element-container">
+        <div class="element-symbol">Hg</div>
+        <div class="element-name-cont">
+			<span class="element-name">
+				Mercurium Preturium
+			</span>
+		</div>
+    </div>
+</body>
+</html>

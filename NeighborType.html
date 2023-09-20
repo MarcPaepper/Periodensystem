@@ -1,49 +1,315 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Element Display</title>
-    <style>
-        /* Styling for the container div */
-        .element-container {
-            border: 4px solid #333; /* Thick border */
-            display: inline-block;
-            text-align: center;
-			height: 130px;
-			width: 90px;
-			box-sizing: content-box;
-        }
+<!--
+	import style.css
+-->
+<link rel="stylesheet" href="style.css">
+	<style>
+	#neighborTable {
+		border-collapse: collapse;
+	}
+	#neighborTable > tbody > tr {
+		display: inline;
+	}
+	#neighborTable > tbody > tr > td {
+		border: 4px solid #333; /* Thick border */
+	}
+	/* Styling for the container div */
+	.element-container {
+		margin: -1px;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		height: 120px;
+		width: 90px;
+		box-sizing: content-box;
+	}
 
-        /* Styling for the upper part displaying the element symbol */
-        .element-symbol {
-            font-size: 48px;
-			height: 80px;
-			width: 100%;
-			line-height: 82px;
-        }
+	/* Styling for the upper part displaying the element symbol */
+	.element-symbol {
+		font-size: 48px;
+		height: 80px;
+		width: 100%;
+		line-height: 82px;
+	}
 
-        /* Styling for the lower part displaying the full element name */
-        .element-name-cont {
-			width: 100%;
-            border-top: 2px solid #333; /* Add a border at the top of the lower part */
-        }
-		.element-name {
-			background: pink;
-			font-size: 16px; /* Adjust font size as needed */
-			word-wrap: break-word;
-		}
-    </style>
-</head>
-<body>
-    <!-- Replace 'Hg' and 'Mercury' with your desired element symbol and name -->
-    <div class="element-container">
-        <div class="element-symbol">Hg</div>
-        <div class="element-name-cont">
-			<span class="element-name">
-				Mercurium Preturium
-			</span>
-		</div>
-    </div>
-</body>
-</html>
+	/* Styling for the lower part displaying the full element name */
+	.element-name-cont {
+		width: 100%;
+		flex: 1;
+		border-top: 2px solid #333; /* Add a border at the top of the lower part */
+		/* align children on vertical center */
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		/* disable text overflow */
+		overflow: hidden;
+	}
+	.element-name {
+		font-size: 16px; /* Adjust font size as needed */
+		word-wrap: break-word;
+	}
+</style>
+
+
+<style>
+	/*#Periodensystem {
+		display: none;
+	}*/
+</style>
+
+<!-- Replace 'Hg' and 'Mercury' with your desired element symbol and name -->
+<table id="neighborTable">
+	<tr>
+		<td>
+			<div class="element-container">
+				<div class="element-symbol">Hg</div>
+				<div class="element-name-cont">
+					<span class="element-name">
+						Mercury
+					</span>
+				</div>
+			</div>
+		</td>
+		<td>
+			<div class="element-container">
+				<div class="element-symbol">Th</div>
+				<div class="element-name-cont">
+					<span class="element-name">
+						Thallium
+					</span>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table>
+
+<table id="Periodensystem" class="gName">
+	<tr class="hauptgr">
+		<td class="e"></td>
+		<td>I</td>
+		<td>II</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>III</td>
+		<td>IV</td>
+		<td>V</td>
+		<td>VI</td>
+		<td>VII</td>
+		<td>VIII</td>
+	</tr>
+	
+	<tr class="nebengr">
+		<td class="e"></td>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+		<td>5</td>
+		<td>6</td>
+		<td>7</td>
+		<td>8</td>
+		<td>9</td>
+		<td>10</td>
+		<td>11</td>
+		<td>12</td>
+		<td>13</td>
+		<td>14</td>
+		<td>15</td>
+		<td>16</td>
+		<td>17</td>
+		<td>18</td>
+	</tr>
+	<tr class='main'>
+		<td class="p">1</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Wasserstoff [1]'>H</td>
+		<td class='e' ></td>
+		<td class='disabled' id='nameTagTD' colspan='14'>{{name}}</td>
+		<td style='display: none'></td>
+		<td style='display: none'></td>
+		<td style='display: none'></td>
+		<td style='display: none'></td>
+		<td style='display: none'></td>
+		<td style='display: none'></td>
+		<td style='display: none'></td>
+		<td style='display: none'></td>
+		<td style='display: none'></td>
+		<td style='display: none'></td>
+		<td style='display: none'></td>
+		<td style='display: none'></td>
+		<td style='display: none'></td>
+		<td class='e' ></td>
+		<td class='hidden' onClick='elClick(event)' data-title='Helium [2]'>He</td>
+	</tr>
+	<tr class='main'>
+		<td class="p">2</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Lithium [3]'>Li</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Beryllium [4]'>Be</td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' colspan='2' id='bigCell'></td>
+		<td style='display: none'></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='hidden' onClick='elClick(event)' data-title='Bor [5]'>B</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Kohlenstoff [6]'>C</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Stickstoff [7]'>N</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Sauerstoff [8]'>O</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Fluor [9]'>F</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Neon [10]'>Ne</td>
+	</tr>
+	<tr class='main'>
+		<td class="p">3</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Natrium [11]'>Na</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Magnesium [12]'>Mg</td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='e' ></td>
+		<td class='hidden' onClick='elClick(event)' data-title='Aluminium [13]'>Al</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Silicium [14]'>Si</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Phosphor [15]'>P</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Schwefel [16]'>S</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Chlor [17]'>Cl</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Argon [18]'>Ar</td>
+	</tr>
+	<tr class='main'>
+		<td class="p">4</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Kalium [19]'>K</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Calcium [20]'>Ca</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Scandium [21]'>Sc</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Titan [22]'>Ti</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Vanadium [23]'>V</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Chrom [24]'>Cr</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Mangan [25]'>Mn</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Eisen [26]'>Fe</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Kobalt [27]'>Co</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Nickel [28]'>Ni</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Kupfer [29]'>Cu</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Zink [30]'>Zn</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Gallium [31]'>Ga</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Germanium [32]'>Ge</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Arsen [33]'>As</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Selen [34]'>Se</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Brom [35]'>Br</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Krypton [36]'>Kr</td>
+	</tr>
+	<tr class='main'>
+		<td class="p">5</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Rubidium [37]'>Rb</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Strontium [38]'>Sr</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Yttrium [39]'>Y</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Zirkonium [40]'>Zr</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Niob [41]'>Nb</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Molybdän [42]'>Mo</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Technetium [43]'>Tc</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Ruthenium [44]'>Ru</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Rhodium [45]'>Rh</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Palladium [46]'>Pd</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Silber [47]'>Ag</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Cadmium [48]'>Cd</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Indium [49]'>In</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Zinn [50]'>Sn</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Antimon [51]'>Sb</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Tellur [52]'>Te</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Iod [53]'>I</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Xenon [54]'>Xe</td>
+	</tr>
+	<tr class='main'>
+		<td class="p">6</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Caesium [55]'>Cs</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Barium [56]'>Ba</td>
+		<td class='hidden l' onClick='elClick(event)' data-title='Lanthan [57]'>La</td>
+		<td class='hidden r' onClick='elClick(event)' data-title='Hafnium [72]'>Hf</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Tantal [73]'>Ta</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Wolfram [74]'>W</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Rhenium [75]'>Re</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Osmium [76]'>Os</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Iridium [77]'>Ir</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Platin [78]'>Pt</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Gold [79]'>Au</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Quecksilber [80]'>Hg</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Thallium [81]'>Tl</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Blei [82]'>Pb</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Bismut [83]'>Bi</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Polonium [84]'>Po</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Astat [85]'>At</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Radon [86]'>Rn</td>
+	</tr>
+	<tr class='main'>
+		<td class="p">7</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Francium [87]'>Fr</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Radium [88]'>Ra</td>
+		<td class='hidden l' onClick='elClick(event)' data-title='Actinium [89]'>Ac</td>
+		<td class='hidden r' onClick='elClick(event)' data-title='Rutherfordium [104]'>Rf</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Dubnium [105]'>Db</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Seaborgium [106]'>Sg</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Bohrium [107]'>Bh</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Hassium [108]'>Hs</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Meitnerium [109]'>Mt</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Darmstadtium [110]'>Ds</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Roentgenium [111]'>Rg</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Copernicium [112]'>Cn</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Nihonium [113]'>Nh</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Flerovium [114]'>Fl</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Moscovium [115]'>Mc</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Livermorium [116]'>Lv</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Tenness [117]'>Ts</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Oganesson [118]'>Og</td>
+	</tr>
+	<tr id='emptyRow'>
+		<td class="e"></td><td class="e"></td>
+	</tr>
+	<tr>
+		<td class="e"></td>
+		<td class="p x" colspan=3>Lanthan.:</td>
+		<td class='r hidden' onClick='elClick(event)' data-title='Cer [58]'>Ce</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Praseodym [59]'>Pr</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Neodym [60]'>Nd</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Promethium [61]'>Pm</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Samarium [62]'>Sm</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Europium [63]'>Eu</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Gadolinium [64]'>Gd</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Terbium [65]'>Tb</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Dysprosium [66]'>Dy</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Holmium [67]'>Ho</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Erbium [68]'>Er</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Thulium [69]'>Tm</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Ytterbium [70]'>Yb</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Lutetium [71]'>Lu</td>
+	</tr>
+	<tr>
+		<td class="e"></td>
+		<td class="p x" colspan=3>Actin.:</td>
+		<td class='r hidden' onClick='elClick(event)' data-title='Thorium [90]'>Th</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Protactinium [91]'>Pa</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Uran [92]'>U</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Neptunium [93]'>Np</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Plutonium [94]'>Pu</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Americium [95]'>Am</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Curium [96]'>Cm</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Berkelium [97]'>Bk</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Californium [98]'>Cf</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Einsteinium [99]'>Es</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Fermium [100]'>Fm</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Mendelevium [101]'>Md</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Nobelium [102]'>No</td>
+		<td class='hidden' onClick='elClick(event)' data-title='Lawrencium [103]'>Lr</td>
+	</tr>
+</table>

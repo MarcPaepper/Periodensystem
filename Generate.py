@@ -133,21 +133,22 @@ for lang in languages:
 	else:
 		os.makedirs(f"Output/{lang}")
 	
-	types = ["gLoc", "gName", "visWiki", "scores"]
+	types = ["gLoc", "gName", "clean", "visWiki", "scores"]
 	if (lang == "en"):
-		outputFiles = ["gLocTable", "gNameTable", "wikiViews", "scores"]
+		outputFiles = ["gLocTable", "gNameTable", "clean", "wikiViews", "scores"]
 	else:
-		outputFiles = ["gLocTable", "gNameTable"]
+		outputFiles = ["gLocTable", "gNameTable", "clean"]
 
 	for type, outputFile in zip(types, outputFiles):
 		isGuessLoc = type == "gLoc"
 		isGuessName = type == "gName"
 		isVis = type == "visWiki" or type == "scores"
+		isData = type != "clean"
 		
 		lookup = wViews256 if type == "visWiki" else scores256
 		lookupD = wViews if type == "visWiki" else scores
 
-		oct =  "onClick='elClick(event)'"; # meaning on click text
+		oct =  "onClick='elClick(event)'" if isData else "onClick='tooltipElement(event)'"; # meaning on click text
 		# hc  = "" if isGuessName else " hidden" # meaning hidden class
 		# ha  = "" if isGuessName else " class='hidden' " # meaning hidden attribute
 
@@ -199,7 +200,7 @@ for lang in languages:
 		col = ""
 		addTxt = ""
 		
-		def get_cell(symbol, i, j, isXtra, classes, attr):
+		def get_cell(symbol, i, j, isXtra, classes, attr, data):
 			addTxt = ""
 			
 			# add color if in vis mode
@@ -218,7 +219,10 @@ for lang in languages:
 				# create tooltip text with additional info
 				atomic_number = sanl.index(symbol) + 1
 				name = translations[symbol][lang]
-				attr.append(f"data-title='{name} [{atomic_number}]'")
+				if (data):
+					attr.append(f"data-title='{name} [{atomic_number}]'")
+				else:
+					attr.append(f"title='{name} [{atomic_number}]'")
 			
 			classesStr = "" if len(classes) == 0 else " class='" + " ".join(classes) + "'"
 			
@@ -257,7 +261,7 @@ for lang in languages:
 					elif ((i == 5 or i == 6) and j == 3):
 							classes.append("r")
 				
-				output += get_cell(symbol, i, j, False, classes, attr)
+				output += get_cell(symbol, i, j, False, classes, attr, isData)
 			output += "\n\t</tr>"
 
 		# empty row
@@ -274,7 +278,7 @@ for lang in languages:
 			classes = ["r", "hidden"] if i == 0 else ["hidden"]
 			
 			symbol = symbolsXtra[0][i]
-			output += get_cell(symbol, 0, i, True, classes, [])
+			output += get_cell(symbol, 0, i, True, classes, [], isData)
 		output += "\n\t</tr>"
 		
 		# add actinides
@@ -287,7 +291,7 @@ for lang in languages:
 			classes = ["r", "hidden"] if i == 0 else ["hidden"]
 			
 			symbol = symbolsXtra[1][i]
-			output += get_cell(symbol, 0, i, True, classes, [])
+			output += get_cell(symbol, 0, i, True, classes, [], isData)
 		output += "\n\t</tr>"
 
 
